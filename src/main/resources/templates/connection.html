@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/js/Resume.js" />
+    <link rel="stylesheet" href="/css/inscription.css" />
+    <link rel="stylesheet" href="/css/header_UU.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div id="wrap">
+    <div class="header-haut">
+        <img src="/PQCNprojet.png"/>
+        <div class="infos">
+            <h2>Venez vous amuser avec nous !</h2>
+        </div>
+        <div class="menu-header">
+            <a href="">
+                <div class="J1">
+                    Pokémon Perle
+                </div>
+            </a>
+            <a href="">
+                <div class="J2">
+                    Jeu 2
+                </div>
+            </a>
+            <a href="">
+                <div class="autres">
+                    Autres
+                </div>
+            </a>
+            <a href="">
+                <div class="profil">
+                    Profil
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <form class="signinform" action="#" th:action="@{/connection}" th:object="${connection}" method="post">
+            <h1>Se connecter</h1>
+            <div class="label">
+                <label for="emailConnect">Email : </label>
+                <input type="email" th:field="*{email}" class="email" id="emailConnect">
+            </div>
+            <div class="label">
+                <label for="passwordConnect">Mot de passe : </label>
+                <input type="password" th:field="*{password}" class="password" id="passwordConnect">
+            </div>
+            <br>
+            <input type="submit" value="Se connecter" class="submit">
+        </form>
+
+        <form class="subform" action="#" th:action="@{/inscription}" th:object="${connection}" method="post">
+            <h1>S'inscrire</h1>
+            <div class="label">
+                <label for="emailSub">Email : </label>
+                <input type="email" th:field="*{email}" class="email" id="emailSub">
+            </div>
+            <div class="label">
+                <label for="passwordSub">Mot de passe : </label>
+                <input type="password" th:field="*{password}" class="password" id="passwordSub">
+            </div>
+            <div class="label">
+                <label for="passwordVerif">Confirmer votre mot de passe : </label>
+                <input type="password" class="password" id="passwordVerif">
+            </div>
+            <div class="label">
+                <label for="usernameSub">Username : </label>
+                <input type="text" th:field="*{username}" class="username" id="usernameSub">
+            </div>
+
+            <label for="age">Je certifie avoir plus de 21 ans :</label>
+            <input type="checkbox" id="age">
+            <br>
+            <input type="submit" value="S'inscrire" id="submit">
+        </form>
+
+    </div>
+</div>
+
+<div class="menu-footer">
+    <a href="">
+        <div class="J1">
+            Tous droits réservés
+        </div>
+    </a>
+    <a href="">
+        <div class="J2">
+            Conditions d'utilisations
+        </div>
+    </a>
+    <a href="">
+        <div class="autres">
+            Nous contacter
+        </div>
+    </a>
+    <a href="">
+        <div class="profil">
+            Nos réseaux
+        </div>
+    </a>
+
+</div>
+</body>
+</html>

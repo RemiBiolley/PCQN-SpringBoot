@@ -1,0 +1,41 @@
+.header-haut img{
+    width: 10%;
+    height: 10%;
+}
+
+.header-haut{
+    display: flex;
+    padding: 1%;
+}
+
+.infos{
+    text-align: center;
+    margin-left: 5%;
+}
+
+.menu-header {
+    display: flex;
+    width: 100%;
+    margin-left: 2%;
+    height: 50%;
+}
+
+.menu-header a {
+    border-radius: 10px;
+    width: 200%;
+    padding: 2%;
+    margin: 1%;
+    text-decoration : none;
+    background-color: #323232;
+}
+
+.menu-header a div {
+    color: white;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu-header a:hover {
+    background-color: #720c2b;
+}
