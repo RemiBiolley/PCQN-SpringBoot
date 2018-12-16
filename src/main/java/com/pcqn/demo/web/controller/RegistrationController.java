@@ -2,6 +2,7 @@ package com.pcqn.demo.web.controller;
 
 import com.pcqn.demo.Connection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,15 @@ public class RegistrationController {
     } */
 
     @PostMapping("/inscription")
-    public String addNewUser(@ModelAttribute Connection connection){
+    public String addNewUser(@ModelAttribute Connection connection, Model model){
         User n = new User();
         n.setUserName(connection.getUsername());
         n.setPassword(connection.getPassword());
         n.setEmail(connection.getEmail());
         userRepository.save(n);
+
+        model.addAttribute("name", n.getUserName());
+        model.addAttribute("email", n.getEmail());
         return "profil";
     }
 

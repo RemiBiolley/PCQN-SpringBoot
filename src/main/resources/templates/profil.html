@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="js/Resume.js" />
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/header_UU.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <title>Profil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
@@ -45,8 +46,8 @@
     <h1>Votre Profil : </h1>
     <div class="you">
         <div class="infos">
-            <h2 class="name">Nigirith</h2>
-            <h2 class="email">fanny.streiff@sgnw.fr</h2>
+            <h2 class="name" th:text="${name}" >Coucou</h2>
+            <h2 class="email" th:text="${email}"> Hey </h2>
             <form action="" method="post" class="modifpassword">
                 <input type="button" value="Modifier mon mot de passe">
             </form>
