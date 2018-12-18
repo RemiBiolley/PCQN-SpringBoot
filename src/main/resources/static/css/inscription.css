@@ -19,9 +19,7 @@ body{
     opacity: 0.95;
     display: flex;
     justify-content:space-around;
-    padding-bottom: 10px;
-    box-sizing: content-box;
-    height: 100%;
+
 }
 
 .content h1{
