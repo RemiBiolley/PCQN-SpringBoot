@@ -1,16 +1,20 @@
-.header-haut img{
-    width: 10%;
-    height: 10%;
-}
-
 .header-haut{
     display: flex;
     padding: 1%;
 }
 
+.header-haut img{
+    width: 100%;
+}
+
+.header-haut a{
+    width: 20%;
+}
+
 .infos{
     text-align: center;
-    margin-left: 5%;
+    margin-left: 3%;
+    color: white;
 }
 
 .menu-header {

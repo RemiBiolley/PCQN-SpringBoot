@@ -1,20 +1,23 @@
 body{
-    background-image: url("https://wallpaperplay.com/walls/full/b/3/8/183091.jpg");
+    background-image: url("https://images3.alphacoders.com/227/227475.jpg");
     background-size: 100%;
     background-attachment: fixed;
 }
 
+#wrap{
+    min-height: 100%;
+    position: relative;
+}
+
 .content{
-    background-color: #ededed ;
     border-radius: 19px;
-    margin-top :2%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left:2%;
     padding: 1%;
     opacity: 0.9;
-    width: 50%;
-    text-align: center;
     height: 100%;
+    padding-bottom: 10px;
+    position: relative;
+    background-color: white;
 }
 
 .content h1{
@@ -24,9 +27,5 @@ body{
 }
 .content h2{
     font-weight: bold;
-}
-
-.content label{
     color: #a40f37 ;
-    font-weight: bold;
 }

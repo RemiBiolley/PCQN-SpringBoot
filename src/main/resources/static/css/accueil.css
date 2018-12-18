@@ -1,0 +1,53 @@
+body{
+    background-image: url("https://hdqwalls.com/download/raichu-pokemon-go-qu-1920x1080.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+#wrap{
+    min-height: 100%;
+    position: relative;
+}
+
+.content{
+    border-radius: 19px;
+    margin-left:2%;
+    padding: 1%;
+    opacity: 0.9;
+    height: 100%;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.content h1{
+    color: #720c2b ;
+    font-weight: bold;
+    font-size: 250%;
+    text-shadow: 1px -1px 40px rgba(255,255,255,0.5);
+}
+.content h2{
+    font-weight: bold;
+    color: #a40f37 ;
+    text-shadow: 1px -1px 40px rgba(255,255,255,0.7);
+}
+
+.nous{
+    color: white;
+}
+
+.jeux{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.jeu1 , .jeu2{
+    width: 40%;
+    justify-content: space-around;
+    min-height: 100%;
+    font-weight: bold;
+}
+
+.jeu2 img, .jeu1 img{
+    width: 100%;
+}
