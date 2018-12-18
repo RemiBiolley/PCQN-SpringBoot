@@ -1,5 +1,3 @@
-$(OnOff1(){
-    $('h2').click(OnOff1(){
-        $('#tonDiv').toggle()
-    });
+$( "#partie1" ).click(function() {
+    $( "#tip11" ).toggle( "slow" );
 });
