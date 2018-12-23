@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Controller
 public class ConnectionController {
     @Autowired
@@ -26,14 +23,7 @@ public class ConnectionController {
 
     @PostMapping("/connection")
     public String connectionSubmit(@ModelAttribute Connection connection, Model model) {
-        /*if(connection.connectVerif("password", "id")){
-            return "result";
-        }
-        else{
-            return "connection";
-        }*/
-        System.out.println(connection.getEmail());
-        System.out.println(connection.getUsername());
+        
         if(userRepository.existsUserByEmailAndPassword(connection.getEmail(), connection.getPassword())){
             User user = userRepository.findUserByEmailAndPassword(connection.getEmail(), connection.getPassword());
             model.addAttribute("name", user.getUserName());
