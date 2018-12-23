@@ -50,3 +50,6 @@ body{
     color : #323232;
     font-size: 130%;
 }
+.tips{
+    display: none;
+}
