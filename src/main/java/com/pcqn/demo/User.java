@@ -1,21 +1,31 @@
 package com.pcqn.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 public class User implements Serializable{
+    @OneToOne(mappedBy = "user")
+    private UserInfo userInfo;
+
+    @ManyToOne
+    private UserType userType;
+
+    @OneToMany(mappedBy = "user")
+    private Collection<Note> notes;
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
+    @Column(name="Pseudo", nullable = false)
     private String userName;
 
+    @Column(name="Email", nullable = false)
     private String email;
 
+    @Column(name="Mdp", nullable = false)
     private String password;
 
     public Integer getId() {
