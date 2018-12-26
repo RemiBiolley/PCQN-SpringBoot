@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/accueil.css" />
@@ -12,17 +12,17 @@
 <div id =wrap>
 
     <div class="header-haut">
-        <a href="Accueil.html"><img src="/img/PQCNprojet.png"/></a>
+        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
         <div class="infos">
             <h2>Venez vous amusez avec nous !</h2>
         </div>
         <div class="menu-header">
-            <a href="Pokemon.html">
+            <a href="/game/2">
                 <div class="J1">
                     Pokémon Perle
                 </div>
             </a>
-            <a href="Rambo.html">
+            <a href="/game/2">
                 <div class="J2">
                     Rambo
                 </div>
@@ -32,9 +32,8 @@
                     Autres
                 </div>
             </a>
-            <a href="profil.html">
-                <div class="profil">
-                    Profil
+            <a th:href="${destination}">
+                <div class="profil" th:text="${isConnected}">
                 </div>
             </a>
 

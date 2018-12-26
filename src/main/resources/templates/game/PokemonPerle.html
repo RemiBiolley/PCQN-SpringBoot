@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/Soluce.css" />
@@ -14,17 +14,17 @@
 <div id="wrap">
 
     <div class="header-haut">
-        <a href="Accueil.html"><img src="/img/PQCNprojet.png"/></a>
+        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
         <div class="infos">
             <h2>Venez vous amusez avec nous !</h2>
         </div>
         <div class="menu-header">
-            <a href="/PokemonPerle.html">
+            <a href="/game/2">
                 <div class="J1">
                     Pokémon Perle
                 </div>
             </a>
-            <a href="/Rambo.html">
+            <a href="/game/1">
                 <div class="J2">
                     Jeu 2
                 </div>
@@ -34,9 +34,9 @@
                     Autres
                 </div>
             </a>
-            <a href="/profil.html">
-                <div class="profil">
-                    Profil
+
+            <a th:href="${destination}">
+                <div class="profil" th:text="${isConnected}">
                 </div>
             </a>
         </div>
