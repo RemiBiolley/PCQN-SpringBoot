@@ -26,8 +26,11 @@ public class GameController {
             model.addAttribute("isConnected", "Connexion / Inscription");
             model.addAttribute("destination", "/connection");
         }
-
+        List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         List<Game> games = gameRepository.findAll();
+
+        model.addAttribute("momentGame1", momentGames.get(0));
+        model.addAttribute("momentGame2", momentGames.get(1));
         model.addAttribute("games", games);
         return "gameList";
 
@@ -43,8 +46,12 @@ public class GameController {
             model.addAttribute("isConnected", "Connexion / Inscription");
             model.addAttribute("destination", "/connection");
         }
+        List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         Game game = gameRepository.findGameById(id);
+
         String name = game.getName();
+        model.addAttribute("momentGame1", momentGames.get(0));
+        model.addAttribute("momentGame2", momentGames.get(1));
         return "game/" + name;
     }
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/profil.css" />
+    <link rel="stylesheet" href="/css/gameList.css" />
     <link rel="stylesheet" href="/css/header_UU.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <title>Les jeux</title>
@@ -17,23 +17,19 @@
             <h2>Venez vous amusez avec nous !</h2>
         </div>
         <div class="menu-header">
-            <a href="/game/2">
-                <div class="J1">
-                    Pokémon Perle
-                </div>
+            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
+                <div class="headerButtonDiv" th:text="${momentGame1.name}"></div>
             </a>
-            <a href="/game/2">
-                <div class="J2">
-                    Rambo
-                </div>
+            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
+                <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
             </a>
-            <a href="/game">
-                <div class="autres">
+            <a class="headerButtonA" href="/game">
+                <div class="headerButtonDiv">
                     Autres
                 </div>
             </a>
-            <a th:href="${destination}">
-                <div class="profil" th:text="${isConnected}">
+            <a class="headerButtonA" th:href="${destination}">
+                <div class="headerButtonDiv" th:text="${isConnected}">
                 </div>
             </a>
 
@@ -57,6 +53,9 @@
                 <td th:text="${game.editeur}"></td>
                 <td>
                     <div th:text="${game.note}"></div>
+                </td>
+                <td>
+                    <img th:src="@{${game.box}}">
                 </td>
             </tr>
         </table>

@@ -30,7 +30,12 @@ public class Game {
     private String editeur;
 
     @Column(name="Jeu_Moment", nullable = false)
-    private boolean momentGame;
+    @Max(1)
+    @Min(0)
+    private Integer momentGame;
+
+    @Column(name="Jaquette", nullable= true)
+    private String box;
 
     public Integer getId() {
         return id;
@@ -68,15 +73,23 @@ public class Game {
         return note;
     }
 
-    public void setNote(Integer note) {
+    public void setNote(float note) {
         this.note = note;
     }
 
-    public boolean isMomentGame() {
+    public Integer getMomentGame() {
         return momentGame;
     }
 
-    public void setMomentGame(boolean momentGame) {
+    public void setMomentGame(Integer momentGame) {
         this.momentGame = momentGame;
+    }
+
+    public String getBox() {
+        return box;
+    }
+
+    public void setBox(String box) {
+        this.box = box;
     }
 }
