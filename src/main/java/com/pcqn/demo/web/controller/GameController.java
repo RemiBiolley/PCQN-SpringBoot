@@ -9,11 +9,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class GameController {
     @Autowired
     private GameRepository gameRepository;
+
+    @GetMapping("/game")
+    public String displayGameList(HttpServletRequest request, Model model){
+        if(request.getSession(false)!=null){
+            model.addAttribute("isConnected", "Profil");
+            model.addAttribute("destination", "/profil");
+        }
+        else{
+            model.addAttribute("isConnected", "Connexion / Inscription");
+            model.addAttribute("destination", "/connection");
+        }
+
+        List<Game> games = gameRepository.findAll();
+        model.addAttribute("games", games);
+        return "gameList";
+
+    }
 
     @GetMapping("/game/{id}")
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){

@@ -1,6 +1,8 @@
 package com.pcqn.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Collection;
 
 @Entity
@@ -18,6 +20,11 @@ public class Game {
 
     @Column(name="Nombre_Notes", nullable = false)
     private Integer nbreNotes;
+
+    @Column(name="Note_Moyenne", nullable = false)
+    @Max(5)
+    @Min(0)
+    private float note;
 
     @Column(name="Editeur", nullable = true)
     private String editeur;
@@ -55,5 +62,21 @@ public class Game {
 
     public void setEditeur(String editeur) {
         this.editeur = editeur;
+    }
+
+    public float getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
+    }
+
+    public boolean isMomentGame() {
+        return momentGame;
+    }
+
+    public void setMomentGame(boolean momentGame) {
+        this.momentGame = momentGame;
     }
 }
