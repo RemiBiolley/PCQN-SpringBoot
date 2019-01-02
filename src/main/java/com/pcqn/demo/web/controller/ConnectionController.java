@@ -85,4 +85,10 @@ public class ConnectionController {
         return userRepository.findAll();
     }
 
+    @GetMapping(path="/disconnect")
+    public String disconnect(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/accueil";
+    }
+
 }

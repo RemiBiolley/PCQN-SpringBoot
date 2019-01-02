@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/js/Resume.js" />
-    <link rel="stylesheet" href="/css/Rambo.css" />
-    <link rel="stylesheet" href="/css/notation.css" />
-    <link rel="stylesheet" href="/css/header_UU.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" th:href="@{/js/Resume.js}" href="/js/Resume.js" />
+    <link rel="stylesheet" th:href="@{/css/Rambo.css}" href="/css/Rambo.css" />
+    <link rel="stylesheet" th:href="@{/css/notation.css}" href="/css/notation.css" />
+    <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -39,6 +39,10 @@
         </div>
     </div>
 
+    <div th:if="${isConnected == 'Profil'}">
+        <a th:href="@{'/disconnect'}">Deconnexion</a>
+    </div>
+
     <div class="content">
         <h1>Rambo</h1>
         <div class="resume">
@@ -49,8 +53,12 @@
             </div>
         </div>
 
+        <div th:text="@{'Note du jeu : ' + ${game.note}}"></div>
+
+        <h3>Donne ta note à ce jeu ou modifie celle que tu as donnée ! Seuls les idiots ne changent pas d'avis ;)</h3>
+
         <form class="rating">
-                <input type="hidden" th:value="${gameId}">
+                <input type="hidden" th:value="${game.id}">
                 <input type="radio" id="star5" name="rating" value="5"  onclick="applyNote();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                 <input type="radio" id="star4half" name="rating" value="4.5" onclick="applyNote();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                 <input type="radio" id="star4" name="rating" value="4" onclick="applyNote();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>

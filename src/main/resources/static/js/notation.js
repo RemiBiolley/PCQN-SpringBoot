@@ -7,7 +7,7 @@ function applyNote(){
             $.ajax({
                 type: "POST",
                 url: "/note",
-                data: {note: value, gameId: gameId},
+                data: {note: value, gameId: game.id},
                 success: function(result){
                     alert('Ca a marché');
                 }

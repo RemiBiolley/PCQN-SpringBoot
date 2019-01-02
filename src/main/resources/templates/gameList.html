@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/gameList.css" />
-    <link rel="stylesheet" href="/css/header_UU.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" th:href="@{/css/gameList.css}" href="/css/gameList.css" />
+    <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
     <title>Les jeux</title>
 </head>
 <body>
@@ -35,6 +35,10 @@
 
 
         </div>
+    </div>
+
+    <div th:if="${isConnected == 'Profil'}">
+        <a th:href="@{'/disconnect'}">Deconnexion</a>
     </div>
 
     <div class="content">

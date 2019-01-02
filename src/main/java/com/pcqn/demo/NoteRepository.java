@@ -18,5 +18,8 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
     @Query(value = "UPDATE note n SET n.note = ?1 WHERE n.id= ?2", nativeQuery = true)
     void updateNote(float newNote, Integer noteId);*/
 
+    @Query(value = "SELECT AVG(note) FROM note n WHERE n.game_id= ?1", nativeQuery = true)
+    float calculateNewGameMean(Integer gameId);
+
     Note findNoteById(Integer id);
 }
