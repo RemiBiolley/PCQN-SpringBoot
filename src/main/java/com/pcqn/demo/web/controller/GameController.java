@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,7 +23,7 @@ public class GameController {
 
     @GetMapping("/game")
     public String displayGameList(HttpServletRequest request, Model model){
-        if(request.getSession(false)!=null){
+        if(request.getSession(false).getAttribute("user")!=null){
             model.addAttribute("isConnected", "Profil");
             model.addAttribute("destination", "/profil");
         }
@@ -41,7 +42,7 @@ public class GameController {
 
     @GetMapping("/game/{id}")
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
-        if(request.getSession(false)!=null){
+        if(request.getSession(false).getAttribute("user")!=null){
             model.addAttribute("isConnected", "Profil");
             model.addAttribute("destination", "/profil");
         }
@@ -55,7 +56,7 @@ public class GameController {
         String name = game.getName();
 
         List<Comment> comments = commentRepository.findAllByGameId(id);
-
+        
         model.addAttribute("comments", comments);
         model.addAttribute("game", game);
         model.addAttribute("momentGame1", momentGames.get(0));
@@ -66,7 +67,7 @@ public class GameController {
     @PostMapping("/note")
     @ResponseBody
     public void changeNote(@RequestParam float note,@RequestParam int gameId, HttpServletRequest request){
-        if(request.getSession(false)==null){
+        if(request.getSession(false).getAttribute("user")==null){
             // Afficher message sur la page (js ?????)
             System.out.println("oupsi1");
         }

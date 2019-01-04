@@ -1,11 +1,18 @@
 package com.pcqn.demo;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 public class Comment {
+    @ManyToOne
+    @JoinColumn(name="comment_id", referencedColumnName = "id")
+    private Comment parentComment;
+
+    @OneToMany(mappedBy = "parentComment")
+    private Collection<Comment> childrenComment;
+
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game game;
@@ -62,5 +69,21 @@ public class Comment {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
+    }
+
+    public Collection<Comment> getChildrenComment() {
+        return childrenComment;
+    }
+
+    public void setChildrenComment(Collection<Comment> childrenComment) {
+        this.childrenComment = childrenComment;
     }
 }

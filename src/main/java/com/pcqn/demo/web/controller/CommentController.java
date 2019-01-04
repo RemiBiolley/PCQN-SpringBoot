@@ -35,4 +35,23 @@ public class CommentController {
 
         commentRepository.save(comment);
     }
+
+    @PostMapping("/response")
+    @ResponseBody
+    public void addResponse(@RequestParam String responseContent, @RequestParam Integer gameId, @RequestParam Integer respondedCommentId, HttpServletRequest request){
+        Comment response = new Comment();
+        response.setContent(responseContent);
+
+        User commentUser = (User) request.getSession().getAttribute("user");
+        response.setUser(commentUser);
+
+        Game commentGame = gameRepository.findGameById(gameId);
+        response.setGame(commentGame);
+
+        response.setDate(LocalDateTime.now());
+
+        response.setParentComment(commentRepository.findCommentById(respondedCommentId));
+
+        commentRepository.save(response);
+    }
 }

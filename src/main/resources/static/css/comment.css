@@ -4,3 +4,20 @@
     padding: 1%;
     border-radius: 10%;
 }
+
+.responseBlockWrite{
+    display: none;
+    background-color: blueviolet;
+    padding: 1%;
+    margin: 1%;
+}
+
+.responseBlock{
+    background-color:#FFD700;
+    padding: 1%;
+    margin: 1%;
+}
+
+.invisible{
+    display: none;
+}

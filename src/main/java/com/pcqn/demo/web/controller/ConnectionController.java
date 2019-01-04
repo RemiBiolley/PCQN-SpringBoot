@@ -24,7 +24,7 @@ public class ConnectionController {
     @GetMapping("/connection")
     public String connectionForm(Model model, HttpServletRequest request) {
         String destination;
-        if(request.getSession(false)!=null){
+        if(request.getSession(false).getAttribute("user")!=null){
             User user = (User) request.getSession().getAttribute("user");
             model.addAttribute("name", user.getUserName());
             model.addAttribute("email", user.getEmail());

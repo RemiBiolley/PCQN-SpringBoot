@@ -154,15 +154,27 @@
             </div>
         </div>
 
-        <div class = "comments">
-            <input type="text" id="myComment">
-            <input type="button" value="Publier" onclick="addComment();" name="gameId">
+        <div class = "comments" th:with="i=0">
+            <input type="text" class="myComment">
+            <input type="button" value="Publier" onclick="addComment();">
 
-            <th:block th:each="comment : ${comments}">
+            <th:block th:each="comment : ${comments}" th:with="i=i+1">
                 <div class="commentBlock">
+                    <input name="invisible" th:value="${comment.id}" class="invisible">
                     <div class="commentWriter" th:text="${comment.user.userName}"></div>
                     <div class="commentContent" th:text="${comment.content}"></div>
                     <div class="commentDate" th:text="${comment.date}"></div>
+                    <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
+                        <div class="responseWriter" th:text="${response.user.userName}"></div>
+                        <div class="responseContent" th:text="${response.content}"></div>
+                        <div class="responseDate" th:text="${response.date}"></div>
+                    </div>
+                    <input type="button" value="Répondre" name="displayResponse">
+                    <div class="responseBlockWrite">
+                        Ecrivez votre réponse ci-dessous :
+                        <input type="text" class="myComment">
+                        <input type="button" value="Publier" name="addResponse">
+                    </div>
                 </div>
             </th:block>
         </div>
