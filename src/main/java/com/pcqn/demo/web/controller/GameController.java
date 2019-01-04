@@ -17,6 +17,9 @@ public class GameController {
     @Autowired
     private NoteRepository noteRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
     @GetMapping("/game")
     public String displayGameList(HttpServletRequest request, Model model){
         if(request.getSession(false)!=null){
@@ -51,6 +54,9 @@ public class GameController {
 
         String name = game.getName();
 
+        List<Comment> comments = commentRepository.findAllByGameId(id);
+
+        model.addAttribute("comments", comments);
         model.addAttribute("game", game);
         model.addAttribute("momentGame1", momentGames.get(0));
         model.addAttribute("momentGame2", momentGames.get(1));

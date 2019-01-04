@@ -1,13 +1,13 @@
-function applyNote(){
+function addComment(){
     jQuery(document).ready(function(){
-        var value = $("input[name='rating']:checked").val();
+        var commentContent = $("input[id='myComment']").val();
         var gameId = $("input[type='hidden']").val();
-        if(value){
-            alert(value);
+        if(commentContent){
+            alert(commentContent);
             $.ajax({
                 type: "POST",
-                url: "/note",
-                data: {note: value, gameId: gameId},
+                url: "/comment",
+                data: {commentContent: commentContent, gameId: gameId},
                 success: function(){
                     window.location.reload();
                 }

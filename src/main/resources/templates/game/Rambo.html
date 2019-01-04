@@ -156,6 +156,19 @@
                 </div>
             </div>
         </div>
+
+        <div class = "comments">
+            <input type="text" id="myComment">
+            <input type="button" value="Publier" onclick="addComment();" name="gameId">
+
+            <th:block th:each="comment : ${comments}">
+                <div class="commentBlock">
+                    <div class="commentWriter" th:text="${comment.user.userName}"></div>
+                    <div class="commentContent" th:text="${comment.content}"></div>
+                    <div class="commentDate" th:text="${comment.date}"></div>
+                </div>
+            </th:block>
+        </div>
     </div>
 </div>
 <div class="menu-footer">
@@ -185,5 +198,8 @@
 </div>
 
 <script src="/js/notation.js" type="text/javascript"></script>
+<script src="/js/commentaire.js"></script>
 </body>
 </html>
+
+<link rel="stylesheet" href="/css/comment.css">
