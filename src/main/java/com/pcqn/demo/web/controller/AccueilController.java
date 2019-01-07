@@ -19,9 +19,15 @@ public class AccueilController {
 
     @GetMapping("/accueil")
     public String displayAccueil(Model model, HttpServletRequest request){
-        if(request.getSession(false).getAttribute("user")!=null){
-            model.addAttribute("isConnected", "Profil");
-            model.addAttribute("destination", "/profil");
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("user")!=null){
+                model.addAttribute("isConnected", "Profil");
+                model.addAttribute("destination", "/profil");
+            }
+            else{
+                model.addAttribute("isConnected", "Connexion / Inscription");
+                model.addAttribute("destination", "/connection");
+            }
         }
         else{
             model.addAttribute("isConnected", "Connexion / Inscription");
@@ -40,16 +46,21 @@ public class AccueilController {
         model.addAttribute("momentGame1", momentGames.get(0));
         model.addAttribute("momentGame2", momentGames.get(1));
 
-        if(request.getSession(false).getAttribute("user")!=null){
-            User user = (User) request.getSession().getAttribute("user");
-            model.addAttribute("name", user.getUserName());
-            model.addAttribute("email", user.getEmail());
-            return "profil";
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("name", user.getUserName());
+                model.addAttribute("email", user.getEmail());
+                return "profil";
+            }
+            else{
+                model.addAttribute("connection", new Connection());
+                return "connection";
+            }
         }
         else{
             model.addAttribute("connection", new Connection());
             return "connection";
         }
-
     }
 }

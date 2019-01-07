@@ -23,14 +23,21 @@ public class GameController {
 
     @GetMapping("/game")
     public String displayGameList(HttpServletRequest request, Model model){
-        if(request.getSession(false).getAttribute("user")!=null){
-            model.addAttribute("isConnected", "Profil");
-            model.addAttribute("destination", "/profil");
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("user")!=null){
+                model.addAttribute("isConnected", "Profil");
+                model.addAttribute("destination", "/profil");
+            }
+            else{
+                model.addAttribute("isConnected", "Connexion / Inscription");
+                model.addAttribute("destination", "/connection");
+            }
         }
         else{
             model.addAttribute("isConnected", "Connexion / Inscription");
             model.addAttribute("destination", "/connection");
         }
+
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         List<Game> games = gameRepository.findAll();
 
@@ -42,21 +49,28 @@ public class GameController {
 
     @GetMapping("/game/{id}")
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
-        if(request.getSession(false).getAttribute("user")!=null){
-            model.addAttribute("isConnected", "Profil");
-            model.addAttribute("destination", "/profil");
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("user")!=null){
+                model.addAttribute("isConnected", "Profil");
+                model.addAttribute("destination", "/profil");
+            }
+            else{
+                model.addAttribute("isConnected", "Connexion / Inscription");
+                model.addAttribute("destination", "/connection");
+            }
         }
         else{
             model.addAttribute("isConnected", "Connexion / Inscription");
             model.addAttribute("destination", "/connection");
         }
+
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         Game game = gameRepository.findGameById(id);
 
         String name = game.getName();
 
         List<Comment> comments = commentRepository.findAllByGameId(id);
-        
+
         model.addAttribute("comments", comments);
         model.addAttribute("game", game);
         model.addAttribute("momentGame1", momentGames.get(0));
@@ -67,41 +81,42 @@ public class GameController {
     @PostMapping("/note")
     @ResponseBody
     public void changeNote(@RequestParam float note,@RequestParam int gameId, HttpServletRequest request){
-        if(request.getSession(false).getAttribute("user")==null){
-            // Afficher message sur la page (js ?????)
-            System.out.println("oupsi1");
+        if(request.getSession(false)==null){
+            System.out.println("pas log");
         }
         else{
-            System.out.println(note);
-            System.out.println(gameId);
-            User user = (User) request.getSession().getAttribute("user");
-            System.out.println(noteRepository.findNoteByUserAndGame(user.getId(), gameId));
-            Game game = gameRepository.findGameById(gameId);
-
-            if(noteRepository.findNoteByUserAndGame(user.getId(), gameId)==null){
-                Note noteSQL = new Note();
-
-                noteSQL.setNote(note);
-                noteSQL.setUser(user);
-                noteSQL.setGame(game);
-                noteRepository.save(noteSQL);
-
-                game.increaseNoteCounter();
-            }
-            else{
-                Integer noteId = noteRepository.findIdNoteByUserAndGame(user.getId(), gameId);
-                Note changedNote = noteRepository.findNoteById(noteId);
-                System.out.println("final :" + note);
-                changedNote.setNote(note);
-                noteRepository.save(changedNote);
+            if(request.getSession(false).getAttribute("user")==null){
+                System.out.println("pas log");
             }
 
-            float newGameMean = noteRepository.calculateNewGameMean(gameId);
-            game.setNote(newGameMean);
-            gameRepository.save(game);
+            else {
+                System.out.println(note);
+                System.out.println(gameId);
+                User user = (User) request.getSession().getAttribute("user");
+                System.out.println(noteRepository.findNoteByUserAndGame(user.getId(), gameId));
+                Game game = gameRepository.findGameById(gameId);
 
+                if (noteRepository.findNoteByUserAndGame(user.getId(), gameId) == null) {
+                    Note noteSQL = new Note();
+
+                    noteSQL.setNote(note);
+                    noteSQL.setUser(user);
+                    noteSQL.setGame(game);
+                    noteRepository.save(noteSQL);
+
+                    game.increaseNoteCounter();
+                } else {
+                    Integer noteId = noteRepository.findIdNoteByUserAndGame(user.getId(), gameId);
+                    Note changedNote = noteRepository.findNoteById(noteId);
+                    System.out.println("final :" + note);
+                    changedNote.setNote(note);
+                    noteRepository.save(changedNote);
+                }
+
+                float newGameMean = noteRepository.calculateNewGameMean(gameId);
+                game.setNote(newGameMean);
+                gameRepository.save(game);
+            }
         }
-
     }
-
 }
