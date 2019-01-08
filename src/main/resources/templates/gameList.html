@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/gameList.css" />
-    <link rel="stylesheet" href="/css/header_UU.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="../static/css/gameList.css" />
+    <link rel="stylesheet" href="../static/css/header_UU.css" />
+    <link rel="stylesheet" href="../static/css/footer.css" />
     <title>Les jeux</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
 <div id =wrap>
 
     <div class="header-haut">
-        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
+        <a href="accueil.html"><img src="../static/img/PQCNprojet.png"/></a>
         <div class="infos">
             <h2>Venez vous amusez avec nous !</h2>
         </div>
@@ -23,7 +23,7 @@
             <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
                 <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
             </a>
-            <a class="headerButtonA" href="/game">
+            <a class="headerButtonA" href="gameList.html">
                 <div class="headerButtonDiv">
                     Autres
                 </div>

@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/profil.css" />
+    <link rel="stylesheet" href="../static/css/modifiermotdepasse.css" />
     <link rel="stylesheet" href="../static/css/header_UU.css" />
     <link rel="stylesheet" href="../static/css/footer.css" />
-    <title>Profil</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Modifier votre mot de passe</title>
 </head>
 <body>
 
 <div class="header-haut">
-    <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
+    <a href="../accueil.html"><img src="../../static/img/PQCNprojet.png"/></a>
     <div class="infos">
-        <h2>Venez vous amuser avec nous !</h2>
+        <h2>Venez vous amusez avec nous !</h2>
     </div>
     <div class="menu-header">
         <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
@@ -22,28 +21,29 @@
         <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
             <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
         </a>
-        <a class="headerButtonA" href="gameList.html">
+        <a class="headerButtonA" href="/game">
             <div class="headerButtonDiv">
                 Autres
             </div>
         </a>
-        <a class="headerButtonA" href="profil.html">
-            <div class="headerButtonDiv">
-                Profil
+        <a class="headerButtonA" th:href="${destination}">
+            <div class="headerButtonDiv" th:text="${isConnected}">
             </div>
         </a>
     </div>
 </div>
 
 <div class="content">
-    <h1>Votre Profil : </h1>
-    <div class="you">
-        <div class="infos">
-            <h2 class="name" th:text="${name}" >Coucou</h2>
-            <h2 class="email" th:text="${email}"> Hey </h2>
-            <button value="Modifier mon mot de passe"></button>
-        </div>
-    </div>
+    <form>
+        <label>Ancien mot de passe : </label>
+        <input type="password" class="password">
+        <label>Nouveau mot de passe : </label>
+        <input type="password" class="newpassword">
+
+    </form>
+
+
+
 </div>
 
 <div class="menu-footer">
