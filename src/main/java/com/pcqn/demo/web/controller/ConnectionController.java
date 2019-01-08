@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,8 +28,7 @@ public class ConnectionController {
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
                 User user = (User) request.getSession().getAttribute("user");
-                model.addAttribute("name", user.getUserName());
-                model.addAttribute("email", user.getEmail());
+                model.addAttribute("user", user);
                 destination="profil";
             }
             else{
@@ -56,8 +56,7 @@ public class ConnectionController {
         if(userRepository.existsUserByEmailAndPassword(connection.getEmail(), connection.getPassword())){
             User user = userRepository.findUserByEmailAndPassword(connection.getEmail(), connection.getPassword());
             request.getSession().setAttribute("user", user);
-            model.addAttribute("name", user.getUserName());
-            model.addAttribute("email", user.getEmail());
+            model.addAttribute("user", user);
             return "profil";
         }
         else{
@@ -68,27 +67,21 @@ public class ConnectionController {
     @PostMapping("/inscription")
     public String addNewUser(@ModelAttribute Connection connection, Model model, HttpServletRequest request){
         User n = new User();
+
         n.setUserName(connection.getUsername());
         n.setPassword(connection.getPassword());
+        n.setRandomAvatar();
         n.setEmail(connection.getEmail());
         userRepository.save(n);
 
         request.getSession().setAttribute("user", n);
-        model.addAttribute("name", n.getUserName());
-        model.addAttribute("email", n.getEmail());
+
 
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         model.addAttribute("momentGame1", momentGames.get(0));
         model.addAttribute("momentGame2", momentGames.get(1));
-        model.addAttribute("name", n.getUserName());
-        model.addAttribute("email", n.getEmail());
+        model.addAttribute("user", n);
         return "profil";
-    }
-
-    @GetMapping(path="/all")
-    public @ResponseBody
-    Iterable<User> getAllUsers() {
-        return userRepository.findAll();
     }
 
     @GetMapping(path="/disconnect")

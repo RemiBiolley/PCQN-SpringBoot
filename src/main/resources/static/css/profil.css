@@ -30,3 +30,8 @@ body{
     color: #a40f37 ;
     font-weight: bold;
 }
+
+.avatar{
+    height: 150px;
+    width: auto;
+}

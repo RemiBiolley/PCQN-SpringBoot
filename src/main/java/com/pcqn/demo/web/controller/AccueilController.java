@@ -1,13 +1,13 @@
 package com.pcqn.demo.web.controller;
 
-import com.pcqn.demo.Connection;
-import com.pcqn.demo.Game;
-import com.pcqn.demo.GameRepository;
-import com.pcqn.demo.User;
+import com.pcqn.demo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -16,6 +16,9 @@ import java.util.List;
 public class AccueilController {
     @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/accueil")
     public String displayAccueil(Model model, HttpServletRequest request){
@@ -49,8 +52,7 @@ public class AccueilController {
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
                 User user = (User) request.getSession().getAttribute("user");
-                model.addAttribute("name", user.getUserName());
-                model.addAttribute("email", user.getEmail());
+                model.addAttribute("user", user);
                 return "profil";
             }
             else{
@@ -62,5 +64,22 @@ public class AccueilController {
             model.addAttribute("connection", new Connection());
             return "connection";
         }
+    }
+
+    @PostMapping("/changeAvatar")
+    @ResponseBody
+    public void changeAvatar(@RequestParam String avatar, HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        user.setAvatar(avatar);
+        request.getSession().setAttribute("user", user);
+        userRepository.save(user);
+    }
+
+    @PostMapping("/changePassword")
+    @ResponseBody
+    public void changePassword(@RequestParam String password, HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        user.setPassword(password);
+        userRepository.save(user);
     }
 }

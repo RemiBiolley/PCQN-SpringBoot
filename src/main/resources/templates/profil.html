@@ -6,6 +6,11 @@
     <link rel="stylesheet" th:href="@{/css/profil.css}" href="/css/profil.css" />
     <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
+    <link rel
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <title>Profil</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
@@ -42,14 +47,24 @@
     <h1>Votre Profil : </h1>
     <div class="you">
         <div class="infos">
-            <h2 class="name" th:text="${name}" >Coucou</h2>
-            <h2 class="email" th:text="${email}"> Hey </h2>
-            <form action="" method="post" class="modifpassword">
-                <input type="button" value="Modifier mon mot de passe">
-            </form>
+            <h2 class="name" th:text="${user.userName}" >Coucou</h2>
+            <h2 class="email" th:text="${user.email}"> Hey </h2>
+
+            <img class="avatar" th:src="@{${user.avatar}}">
+
         </div>
-        <div class="photo">
-            <img src="https://archzine.fr/wp-content/uploads/2015/04/1-comment-choisir-ses-lunettes-reflet.jpg">
+
+        <div class="modifInfos">
+            <input type="button" value="Modifier les infos">
+            <div class="modifInfosForm">
+                <label for="changeAvatar">Pour changer ton avatar, ça se passe ici !</label><input type="file" id="changeAvatar">
+                <input type="button" id="changeAvatarSub" value="Change moi ça !" onclick="changeAvatar();">
+                <br>
+                <label for="password">Change ton mdp !</label><input type="text" id="password">
+                <br>
+                <label for="passwordConfirm">Confirme le mdp</label><input type="text" id="passwordConfirm">
+                <input type="button" id="passwordSub" value="Change moi ça !" onclick="changePassword();">
+            </div>
         </div>
     </div>
 </div>
@@ -77,6 +92,8 @@
     </a>
 
 </div>
+
+<script src="/js/profil.js" type="text/javascript"></script>
 
 </body>
 </html>
