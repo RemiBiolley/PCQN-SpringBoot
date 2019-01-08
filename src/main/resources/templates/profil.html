@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" th:href="@{/js/Resume.js}" href="/js/Resume.js" />
     <link rel="stylesheet" th:href="@{/css/profil.css}" href="/css/profil.css" />
     <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
-    <link rel
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -28,12 +28,12 @@
         <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
             <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
         </a>
-        <a class="headerButtonA" href="/game">
+        <a class="headerButtonA" href="gameList.html">
             <div class="headerButtonDiv">
                 Autres
             </div>
         </a>
-        <a class="headerButtonA" href="/profil">
+        <a class="headerButtonA" href="profil.html">
             <div class="headerButtonDiv">
                 Profil
             </div>

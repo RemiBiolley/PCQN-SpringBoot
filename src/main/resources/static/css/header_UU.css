@@ -24,7 +24,7 @@
     height: 50%;
 }
 
-/*.menu-header div a {
+.menu-header div a {
     border-radius: 10px;
     width: 200%;
     padding: 2%;
@@ -62,7 +62,8 @@
 
 .menu-header a:hover {
     background-color: #720c2b;
-}*/
+}
+
 
 .menu-header .headerButtonA {
     border-radius: 10px;

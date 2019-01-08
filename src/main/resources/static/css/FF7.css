@@ -1,5 +1,5 @@
 body{
-    background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2013/06/13/102448/35fe375315aa4138e3fa66ac75d5270b-700.jpgite") ;
+    background-image: url("https://i.pinimg.com/originals/06/cb/fb/06cbfb2ecad06df5599d9db0bfe4332b.jpg") ;
     background-attachment: fixed;
     height: 100%;
 }
@@ -24,8 +24,8 @@ body{
 }
 
 .resume img{
-    width: 20%;
-    height: 20%;
+    width: 10%;
+    height: 10%;
 }
 
 .resume .text{
@@ -44,9 +44,13 @@ body{
 .content h2{
     color: #a40f37 ;
     font-weight: bold;
+    width: 20%;
 }
 
 .content h3{
     color : #323232;
     font-size: 130%;
+}
+.tips{
+    display: none;
 }

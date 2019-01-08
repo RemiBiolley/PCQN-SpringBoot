@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/FF7.css" />
+    <link rel="stylesheet" href="../../static/css/notation.css" />
+    <link rel="stylesheet" href="../../static/css/header_UU.css" />
+    <link rel="stylesheet" href="../../static/css/footer.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Final Fantasy 7</title>
+</head>
+<body>
+
+<div id="wrap">
+    <div class="header-haut">
+        <a href="../accueil.html"><img src="../../static/img/PQCNprojet.png"/></a>
+        <div class="infos">
+            <h2>Venez vous amusez avec nous !</h2>
+        </div>
+        <div class="menu-header">
+            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
+                <div class="headerButtonDiv" th:text="${momentGame1.name}"></div>
+            </a>
+            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
+                <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
+            </a>
+            <a class="headerButtonA" href="/game">
+                <div class="headerButtonDiv">
+                    Autres
+                </div>
+            </a>
+            <a class="headerButtonA" th:href="${destination}">
+                <div class="headerButtonDiv" th:text="${isConnected}">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Final Fantasy 7</h1>
+        <div class="resume">
+            <img src="../../static/img/finalfantasy7.jpg"/>
+            <div class="text">
+                La Shinra, une organisation industrielle et politique détenant le pouvoir sur toute la planète, tire sans se soucier de l'équilibre naturel les ressources souterraines de MAKO, la très puissante énergie se trouvant dans le sol et nécessaire à la survie de la planète. AVALANCHE, un groupe de réactionnaires, décide d'empêcher la Shinra de vider ces réserves énergétiques en faisant exploser les extracteurs de MAKO. Ils font appels à Cloud, ex-recrue du SOLDAT, une faction de l'armée de la Shinra. Au cours d'une expédition au quartier général de la Shinra, le groupe AVALANCHE découvre le corps sans vie du président de l'entreprise. Cette situation est liées à divers événements qui se sont passés plusieurs années auparavant dans divers lieux de la planète.
+                Votre périple vous mène en différents endroits, non seulement à la recherche des événements passés, mais également sur les traces du mystérieux individu ayant assassiné le président de la Shinra...
+            </div>
+        </div>
+
+        <form class="rating">
+            <input type="hidden" th:value="${gameId}">
+            <input type="radio" id="star5" name="rating" value="5"  onclick="applyNote();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating" value="4.5" onclick="applyNote();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating" value="4" onclick="applyNote();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating" value="3.5" onclick="applyNote();"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating" value="3" onclick="applyNote();"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating" value="2.5" onclick="applyNote();"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating" value="2" onclick="applyNote();"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating" value="1.5" onclick="applyNote();"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating" value="1" onclick="applyNote();"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating" value="0.5" onclick="applyNote();"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+        </form>
+    <br>
+        <div class="soluce">
+            <div class="partie" >
+                <h2 id="partie1">Vallée de Corral</h2>
+                <div class="tips" id="tip1">
+                    <p>
+                        Vous commencez le CD2 dans la Cité des Anciens. Cloud sent que Sephiroth se dirige vers le Nord. Empruntez alors le même chemin que votre ennemi. Vous arrivez devant un grand coquillage. Avant de grimper sur celui-ci, contournez-le au niveau du sol pour ouvrir le coffre à droite de l'écran. Vous recevez une Vipère hallebarde. Revenez sur vos pas et montez au sommet du coquillage. Redescendez sur sa partie externe pour accéder à l'entrée d'une grotte.
+                        Vous vous trouvez devant plusieurs failles. Commencez par escalader celle de gauche. En haut de cette dernière, choisissez d'atterrir sur la plate-forme de gauche pour grimper dans la nouvelle faille devant vous. Montez le plus haut possible pour atteindre un coffre contenant un Bracelet éclair.
+                        Redescendez légèrement de manière à atteindre le bord droit de l'écran. Une nouvelle fissure vous permettra de récupérer une Hypnocouronne en bas et un Mégalixir en haut à droite.
+                        A l'étage du Mégalixir, progressez vers la gauche et enfin montez à nouveau à l'aide de la faille centrale. Vous arrivez alors devant une immense échelle. Tout d'abord, choisissez de descendre pour obtenir la matéria Super magie. Partez dans l'autre sens pour atteindre le sommet de cette zone. Dans l'écran suivant, récoltez la Source de pouvoir et marchez en direction de la zone lumineuse. Vous parvenez aux premières neiges.
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie2"> Le Village Glaçon</h2>
+                <div class="tips" id="tip2">
+                    <p>
+                        Avancez dans la neige et vous retrouverez la civilisation en pénétrant dans le Village Glaçon. Evidemment, nous allons commencer par récupérer les différents objets qui s'y cache.
+                        Tout d'abord, l'habitation de gauche est un magasin d'armes. Celle au second plan renferme un Ether turbo au sous-sol. Au rez-de-chaussée, plusieurs vidéos très instructives sont visionnables. Elles concernent le professeur Gast, Ifalna (la mère d'Aeris) et ... Hojo.
+                        Continuons notre visite en rejoignant la droite du village. Franchissez le seuil de la maison au premier plan et prenez la carte accrochée au mur, ainsi que la Boisson de héros et le Vaccin dans la pièce adjacente.
+                        Entrez à présent, entrez dans la maison derrière la pancarte "INN" et montez à l'étage. A proximité de la fenêtre de gauche vous découvrirez une Potion-X.
+                        Maintenant, partez en direction du Nord. Un homme vous prévient du danger que vous courez en continuant votre périple. Insistez pour passer et Elena des Turks fera son apparition. Lorsque celle-ci vient à votre rencontre, appuyez plusieurs fois sur gauche ou droite pour éviter son coup. Pendant qu'Elena s'initie au roulez-boulez, entrez dans la maison au centre du village pour récupérer le Surf des neiges du petit garçon.
+                        Revenez voir l'homme au fond du village qui cette fois-ci vous laissera passer et vous expliquera les commandes du surf. Vous participez alors à un mini-jeu (disponible dès lors au Gold Saucer). Pour cette descente, capturer des ballons ou faire un bon chrono n'a aucune influence sur la suite des évènements. Cependant, il est fortement conseillé de prendre à gauche à la première intersection.
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie3">Le Grand Glacier</h2>
+                <div class="tips" id="tip3">
+                    <p>
+                        Voici une partie du jeu assez délicate. Vous devez toujours vous diriger vers le Nord. Si jamais vous restez trop longtemps dans le Glacier, vous vous évanouirez et vous vous réveillerez chez M.Holzoff, qui est justement le lieu que vous devez atteindre pour continuer l'aventure.
+                        Alors pourquoi est-ce si difficile? Eh bien si vous souhaitez finir le jeu à fond, vous devez acquérir tous les objets, équipements et matérias de la zone. Et c'est là où ça se corse : l'itinéraire à suivre devient beaucoup plus compliqué. C'est pour cela que vous pouvez consulter cette carte ci-dessous (cliquez dessus) pour en savoir plus sur le Grand Glacier.
+                        Commençons par les zones d'atterrissages (points bleus sur la carte). Votre position dépend des chemins que vous avez sélectionné lors de votre descente en surf. La ligne jaune représente l'itinéraire que nous allons suivre. On remarque donc qu'en étant parti à gauche à la première intersection, on rejoint plus rapidement la route à suivre.
+                        Regardez donc les deux images ci-dessous. Celle de gauche figure l'écran où vous atterrissez si vous êtes parti auparavant à gauche puis à droite tandis que celle de droite présente l'écran d'arrivée après avoir glissé deux fois vers la gauche. Cette forêt est le début du parcours : suivez donc la flèche rouge sur l’image de gauche pour y arriver.
+                        Une fois dans la forêt, récupérez la Source spirituelle cachée entre les arbres et dirigez vous vers l'Est.
+                        Vous parvenez à un petit pont. Traversez-le et continuez à marcher en direction de l'Ouest. Ne vous inquiétez pas s'il y a beaucoup de zones identiques à traverser.
+                        Vous accédez à un nouveau lieu contenant plusieurs roches arrondies. Au centre de ce lieu il y a une petite grotte où vous pouvez vous procurer un Elixir (un bug est exploitable ici).
+                        Revenez à présent à l'écran du pont et cette fois avancez vers le Sud. Au bout de quelque temps vous vous retrouverez à l'entrée. Sortez du Grand Glacier pour revenir sur la mappemonde, et pénétrez à nouveau dans l'enfer blanc.
+                        A quoi sert cette manipulation?
+                        Cela vous permettra de sauvegarder dans un premier temps, de revenir au Village Glaçon si vous le souhaitez, mais surtout de ne pas vous évanouir dans le Grand Glacier. En effet, en retournant à l'extérieur, vous réduisez à zéro le risque de faire un malaise (qui augmentera à nouveau lorsque vous y retournerez).
+                        Maintenant, partez vers la droite.
+                        Vous arrivez devant l'entrée d'une petite grotte qui permet de revenir sur la carte du monde. Avancez plutôt vers le Nord, chemin de gauche.
+                        Vous arrivez à l'écran figuré par l’image ci-dessous à droite. Avancez sur la plaque de glace en ramassant au passage la Potion. Sortez de cette zone par le Nord.
+                        Vous parvenez alors à plusieurs roches flottant sur le lac. Vous devez emprunter un chemin précis, pour ne pas vous retrouver bloqué en plein milieu du cours d'eau. Encore une fois, la capture d'écran de gauche (cliquez pour agrandir) vous indiquera le parcours à suivre (aller et retour).
+                        Cette périlleuse traversée sert à atteindre une grotte renfermant un Bit de sûreté. Une fois l'objet récupéré, revenez à l'écran de la plaque de glace.
+                        Lorsque vous aurez retrouvé la terre ferme, partez une nouvelle fois vers le Nord. Vous arrivez rapidement devant un sapin isolé. A partir de ce point de repère, dirigez vous vers l'Est.
+                        C'est presque fini! Vous vous retrouvez devant une sorte de rocher caractérisé par de nombreux pics. Contournez-le par la droite. Vous parcourez alors deux écrans identiques. Dans le second, une matéria est à peine visible : il s'agit de Coupure supplémentaire.
+                        Un peu plus au Nord, touchez la source d'eau chaude. Cela vous permettra de réaliser la quête de la femme des neiges (matéria Alexandre à gagner).
+                        Enfin, encore plus loin, vous semblez être dans une zone ressemblant à la mappemonde. Il s'agit d'un grand champ de neige. Marchez tout droit sans jamais dévier vers la gauche ou la droite (aidez vous des repères) et vous tomberez sur une grotte. A l'intérieur, une matéria Tout vous attend.
+                        Continuez à avancer vers le Nord : vous arrivez chez M.Holzoff, c'est donc la fin du Grand Glacier!
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie4">La Falaise de Gaëa</h2>
+                <div class="tips" id="tip4">
+                    <p>
+                        Chez M.Holzoff, sauvegardez la partie et reposez-vous. Une longue ascension vous attend. Comme pour le Grand Glacier, si la température de votre corps est trop basse, vous faites un malaise (et vous vous réveillez chez l'alpiniste). Commencez donc par changer votre équipe si besoin, puis avancez en direction du Nord.
+                        Grimpez jusqu'au premier drapeau rouge. Réchauffez-vous à chaque plate-forme en appuyant plusieurs fois sur carré.
+                        Vous parvenez au bout de quelques temps à l'entrée d'une grotte. Dans ces cavernes, il est conseillé d'apprendre les Talents de l'ennemi Souffle magie et Trine avec Stilva ainsi que Haleine aigre avec Malboro (en s'équipant au préalable d'un Ruban).
+                        A l'intérieur, vous ne pouvez aller que tout droit. De plus, à la première intersection, le chemin de droite est bloqué par des pics de glace. Partez donc à gauche pour revenir sur l'écran initial. Après le pont, avancez tout droit pour découvrir une pièce secrète renfermant un Ruban.
+                        Plus loin n'oubliez pas d'ouvrir le coffre bleu. Il contient un Javelot pour Cid, une arme très performante pour améliorer votre matéria : augmentation double, cinq orifices.
+                        Passez par l'ouverture non loin du coffre. Vous arrivez devant un long tunnel qui aboutit à un petit rocher. Poussez-le pour détruire les pics de glace.
+                        La voie étant libre, refaites tout le chemin en sens inverse jusqu'à l'intersection. L'étroit chemin mène à l'extérieur, pour une seconde ascension.
+                        Montez jusqu'à la prochaine caverne en prenant garde aux deux impasses sur le flanc droit. Cette nouvelle salle est remplie de trous. Ne vous en préoccupez pas pour l'instant et récupérez plutôt l'Elixir dans le coffre de droite. Plus au Nord, passez par l'ouverture pour vous retrouver à nouveau à l'extérieur. Contournez le pic rocheux pour accéder à une salle contenant plusieurs stalactites.
+                        Le coffre de droite vous permet d'acquérir un Bracelet feu et celui de gauche un Mégalixir. Mais pour atteindre ce dernier, vous devrez affronter les quatre pics de glace, accompagnés de Chauve-souris. Après chaque combat, choisissez de rester sur votre corniche. Lorsque le Mégalixir sera en votre possession, revenez à la première salle : les trous ont été comblés par les stalactites!
+                        Ramassez la Source de rapidité dans le coffre de gauche puis avancez sur le chemin formé par les pics de glace.
+                        Sur le sentier de neige, prenez la Super épée. Un peu plus loin, c'est la troisième ascension qui débute. Lorsque vous serez à l'intérieur de la falaise, sauvegardez et touchez la source lumineuse pour restaurer vos HP/MP. En effet, dans l'écran suivant, vous aurez à affronter Schizo.
+                        Une dernière montée vous amène au sommet de la falaise de Gaëa et vous permet de contempler l'étape ultime de votre traversée du désert.
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie5">La Réunion</h2>
+                <div class="tips" id="tip5">
+                    <p>
+                        Un immense cratère, formé il y a 2 000 ans par l'arrivée de la Calamité des Cieux sur Terre, Jénova. C'est le lieu de la "Réunion".
+                        Descendez sur la pente rocheuse. Si vous rencontrez des Gigas, vous pourrez leur voler le bracelet du même nom (+30 en Force mais augmentation nulle). Au pied de la zone escarpée, Tifa rejoint votre groupe si elle n'en faisait pas déjà partie.
+                        Plus loin, ramassez la matéria Néo Bahamut au premier plan puis sauvegardez.
+                        La Shinra arrive par la voie des airs, il n'y a donc plus une minute à perdre. Poursuivez votre chemin et vous serez face à des vents violents. Parlez aux deux personnes encapuchonnées pour obtenir une Super potion et un Ether. Puis, avancez sur le sentier rocailleux au moment où le vent faiblit. Si vous échouez, vous devrez affronter une Aile du vent.
+                        Le sentier devient de plus en plus sinueux, et les membres de la "Réunion" s'effondrent les uns après les autres. Récupérez le Poing de Kaiser dans le coffre et continuez à courir vers le Nord. Une nouvelle fois, vous aurez à traverser une tempête de vent. En avançant au bon moment, vous retrouverez Sephiroth. Celui-ci disparaît pour laisser place à Jénova.MORT.
+                        Après l'affrontement, nos héros se rendent compte que depuis le début, ils n'étaient pas à la poursuite de Sephiroth mais de Jénova, qui a le pouvoir de se métamorphoser. Vous récupérez la Matéria Noire et vous décidez de la confier à l'un de vos amis (vous avez le choix entre Barret et Nanaki). Sauvegardez ensuite la partie en n'oubliant pas de prendre au passage Turbo MP ainsi que l'Anneau poison.
+                        Dans cet écran, il y a deux ennemis que vous pouvez transformer en Source spirituelle : Conducteur de dragon et Killbin.
+                        Encore plus au Nord, une nouvelle tempête se déchaîne. Passez lorsqu'il n'y a pas de coup de vent ou de décharges électriques.
+                        Et puis tout d'un coup, vous voilà à Nibelheim, cinq ans auparavant. Comme dans les souvenirs de Cloud, Sephiroth entre dans la ville, mais celui qui le suit n'est pas Cloud. Lorsque vous contrôlez de nouveau ce dernier, parlez à Tifa.
+                        Dans la ville en flammes, c'est toujours le même personnage brun qui remplace Cloud. Sephiroth apparaît et répète à celui-ci qu'il n'est qu'une marionnette. Il rajoute même que Cloud a été fabriqué par Hojo il y a cinq ans. Et bien sûr, sur la photo prise à la même période, notre héros n'y figure pas. Le stratagème de Sephiroth fonctionne : Cloud est déboussolé.
+                        Et pendant ce temps là, Rufus arrive à ce qu'il pense être "la Terre Promise". Les Armes, créées par la Planète, commencent alors à s'agiter.
+                        Le personnage à qui vous aviez confié la Matéria Noire sera dupé. Il donnera l'objet à Cloud. Ce dernier, comprenant qu'il a été manipulé de bout en bout, remet la matéria au vrai Sephiroth, provoquant l'appel du Météore et le réveil des Armes. Rufus et tous les autres personnages s'enfuient à bord du Hauvent. Cloud est plongé dans la Rivière de la Vie...
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie6">L'exécution</h2>
+                <div class="tips" id="tip6">
+                    <p>
+                        Un flash-back vous montre la rencontre de Cloud et Tifa à Midgar, juste avant le début du jeu. Puis Tifa se réveille dans une cellule de Junon, une semaine après la fuite du continent Nord. Cloud est introuvable, et pire encore, le Météore a effectivement été appelé. De plus, les Armes commencent à causer de gros dégâts. Après une courte discussion avec Barret, Rufus et Heidegger entrent dans la pièce et vous informent qu'ils ont l'intention de vous exécuter en public.
+                        Avec Barret, suivez le garde jusqu'à une grande salle. Scarlet est déjà là et amène Tifa dans la chambre à gaz. Malheureusement, la joie de la responsable Shinra est de courte durée. Une des Armes attaque la ville. C'est alors que Cait Sith enlève son déguisement et endort Scarlet! Un combat s'enclenche contre les deux gardes. Après l'affrontement, Barret tentera de libérer Tifa, sans succès.
+                        Rufus est décidé à détruire l'Arme. Cependant, le tir du gros canon échoue et laisse place aux armes conventionnelles.
+                        L'impact créée par l'Arme a libéré le gaz autour de Tifa. Cait Sith vous propose de quitter la pièce et de rejoindre l'aéroport. A partir de maintenant, vérifiez les matérias des deux personnages car les soldats rencontrés sont très puissants. Partez à droite puis continuez tout droit. Si vous avez intégré Youfie dans votre groupe au cours du premier CD, elle vous rejoindra maintenant dans l'équipe.
+                        Vous accédez enfin à l'aéroport. Appuyez sur le bouton de l'élévateur pour monter au niveau supérieur. Alors que Barret et ses compagnons semblent être dans un cul-de-sac, Tifa essaye de se libérer à l'aide de la clé tombée à terre. Aidez-vous des jambes pour ramener l'objet vers vous, puis avancez la tête pour l'attraper avec la bouche, et enfin délivrer votre bras droit puis le bras gauche. Appuyez sur le bouton derrière la chaise pour arrêter le gaz. L'Arme viendra apporter une aide bienvenue en créant une fissure dans le mur.
+                        La Sister Ray a enfin touché sa cible. Avec Tifa, descendez le long de la paroi. Puis, une fois sur le canon, allez tout au bout. Un combat singulier vous opposera à Scarlet (frappez avec Rond). Après ce règlement de comptes, Barret viendra vous sauver depuis le Hautvent. Dirigez-vous vers le cockpit puis vers la salle d'opération pour former votre équipe. Cet appareil est maintenant vôtre!
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie7">Mideel</h2>
+                <div class="tips" id="tip7">
+                    <p>
+                        Certes, vous avez maintenant le contrôle du ciel. Certes, de nouvelles quêtes sont réalisables, comme l'élevage de Chocobos. Mais la sombre musique qui accompagne désormais vos déplacements sur la mappemonde est là pour vous rappeler que la fin du monde est proche.
+                        Tifa dirige l'équipe. Avant de poursuivre l'aventure, rejoignez sa maison à Nibelheim. En examinant le piano, vous recevez El. Base.
+                        A présent, il est temps de retrouver Cloud. A bord du Hauvent, Nanaki vous informe que la Rivière de la Vie peut jaillir à certains endroits de la surface de la Planète. Rendez-vous donc sur l'île au Sud du continent de Midgar, à Mideel. En entrant dans cette sympathique bourgade, vous ne tarderez pas à apprendre qu'un jeune homme a été retrouvé sur la plage. Il s'agit bien de Cloud, mais malheureusement celui-ci a été victime d'une overdose de Mako. Tifa décide de rester à son chevet.
+                        La direction de l'équipe est confiée à Cid. Retournez à Mideel pour récupérer quelques objets. Pour commencer, entrez dans la maison voisine de la clinique. Un Elixir vous attend sur le lit du vieil homme.
+                        Ensuite, entrez dans le magasin d'armes. Une porte au fond de la pièce semble fermée à clé. Ressortez et traversez le pont de bois. En contournant la petite maison, vous entendrez un petit tintement. Ramassez la clé au sol et utilisez-la sur cette fameuse porte. Cid s'énervera et le gérant du magasin vous demandera ce qui se passe. Excusez-vous pour gagner un Anneau maudit.
+                        Dans toutes les boutiques de la ville, une femme paniquée fait ses courses. Si vous donnez un Légume Mimett au Chocobo blanc et que vous le grattez derrière l'oreille, il vous offrira Contenir. Ces légumes peuvent être achetés au Ranch des Chocobos.
+                        Remontez à bord du Hauvent : votre prochain objectif est de récupérer de la Méga-Matéria.
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie8">Le train de Corel</h2>
+                <div class="tips" id="tip8">
+                    <p>
+                        A Midgar, les plus hauts responsables de la Shinra se réunissent. Ils décident tous ensemble de détruire le Météore avec de la Méga-Matéria, un concentré d'énergie Mako 300 fois plus puissant qu'une matéria classique. Un premier exemplaire de cette arme dévastatrice se situe au réacteur de Corel. Donc, avec le Hauvent, posez vous à côté du village en ruines et empruntez la voie ferrée en sens inverse.
+                        Vous arrivez finalement au réacteur. Eliminez les deux soldats. Cependant, rien n'est gagné, le train contenant la Méga-Matéria s'échappe! Cid emprunte alors un autre véhicule et une course-poursuite démarre. Vous n'avez que 10 minutes pour prendre le contrôle de l'autre train, sinon la Méga-Matéria sera perdue pour toujours.
+                        Votre premier objectif est d'arriver à hauteur de la locomotive, pour cela, appuyez le plus vite possible et alternativement sur les touches haut et triangle.
+                        Le plus dur reste à faire. Vous allez devoir essuyer cinq combats avant la fin du chronomètre.
+                        Les premiers ennemis à détruire sont des Conduit de gaz. Ils sont relativement faibles, il faut donc gagner du temps en utilisant vos magies les plus puissantes comme Feu3, Glace3, Trine...
+                        Le troisième combat est déjà plus difficile. Cependant, le Wolfmeister (10 000 HP) est vulnérable à l'eau. Le Talent de l'ennemi Scaphandre (appris avec Jénova.VIE) sera donc particulièrement utile.
+                        Le monstre suivant est Arme d'aigle (17 000 HP). Celui-ci est faible face à la foudre. Néanmoins, essayez de lui voler l'armure unique Bijou de guerrier avant de l'exterminer.
+                        Enfin vous accédez à la tête de la locomotive, avec cette fois-ci un combat contre un simple soldat. Une fois aux manettes du train, poussez les leviers avec les commandes qui s'affichent à l'écran. Le train ne semble pas vouloir freiner mais finalement Cid parvient à le stopper juste à temps. A Corel, vous recevrez enfin la Méga-Matéria.
+                        Si le train est entré en collision avec les habitations, vous ne gagnerez pas l'objet. Il est alors préférable dans ce cas de recommencer cet épisode du jeu.
+                        Les villageois vous accueillent comme il se doit après ce fabuleux sauvetage. Un petit garçon vous gratifie même de la matéria Ultima. Dans le cas où le train aurait démoli Corel, il vous la vendra pour 50 000 Gils!
+                        Avant de partir, entrez dans la maison a proximité de l'auberge. Une femme vous offrira la dernière limite de Barret : Catastrophe.
+                    </p>
+                </div>
+            </div>
+            <div class="partie">
+                <h2 id="partie9">Fort Condor</h2>
+                <div class="tips" id="tip9">
+                    <p>
+                        Cid suggère d'aller récupérer la seconde Méga-Matéria au réacteur de Fort Condor, au Sud-Est de Junon. Une fois à l'intérieur, l'homme au chapeau vous confirme que la Shinra est en route. Avant de se jeter au cœur de la bataille, vous avez la possibilité de vous reposer ou d'acheter quelques articles. Lorsque vous serez prêt, grimpez sur l'échelle de gauche.
+                        Au poste de garde, parlez à l'homme au bandana pour démarrer l'affrontement. Ceux qui ont pris la peine de réaliser la quête de Fort Condor n'auront aucun mal à gérer le flot d'ennemis. Pour les autres, examinez attentivement les points forts et les points faibles de vos unités et placez des armes fixes pour bloquer des couloirs.
+                        Cependant, soyons clair, cette bataille nécessite beaucoup d'argent. Alors il existe une astuce pour ne pas se ruiner, qui est de vous laisser envahir par les unités ennemies. Vous affrontez alors CMD.Corne majestueuse contre qui vous pouvez gagner la très rare armure Garde impérial (et on ne se lasse pas de Still More Fighting!). Le Boss n'est pas très difficile à vaincre et vous permet de repousser l'attaque de la Shinra en cas de victoire.
+                        L'homme du poste de garde vous félicite. Mais tout d'un coup, l'œuf qui était protégé par l'immense condor est en train d'éclore! Montez sur le toit du réacteur pour admirer le nouveau né, mais surtout pour ramasser la matéria Phénix.
+                        L'homme au chapeau vous remettra également la Méga-Matéria.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-footer">
+    <a href="">
+        <div class="J1">
+            Tous droits réservés
+        </div>
+    </a>
+    <a href="conditions.html">
+        <div class="J2">
+            Conditions d'utilisations
+        </div>
+    </a>
+    <a href="">
+        <div class="autres">
+            Nous contacter
+        </div>
+    </a>
+    <a href="">
+        <div class="profil">
+            Nos réseaux
+        </div>
+    </a>
+
+</div>
+
+
+
+<script type="text/javascript" src="../../static/js/Resume.js"></script>
+</body>
+</html>
