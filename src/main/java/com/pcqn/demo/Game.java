@@ -92,4 +92,8 @@ public class Game {
     public void setBox(String box) {
         this.box = box;
     }
+
+    public void increaseNoteCounter(){
+        this.setNbreNotes(this.nbreNotes+1);
+    }
 }

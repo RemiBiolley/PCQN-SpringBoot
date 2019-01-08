@@ -1,15 +1,16 @@
 function applyNote(){
     jQuery(document).ready(function(){
         var value = $("input[name='rating']:checked").val();
-        var gameId = $("input[type='hidden']").val();
-        if(value){
+        var gameId = $("input[name='gameId']").val();
+        if(value && gameId){
             alert(value);
+            alert(gameId);
             $.ajax({
                 type: "POST",
                 url: "/note",
                 data: {note: value, gameId: gameId},
-                success: function(result){
-                    alert('Ca a marché');
+                success: function(){
+                    window.location.reload();
                 }
 
             });

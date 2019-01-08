@@ -23,12 +23,18 @@ public class ConnectionController {
 
     @GetMapping("/connection")
     public String connectionForm(Model model, HttpServletRequest request) {
-        String destination;
+        String destination="error";
         if(request.getSession(false)!=null){
-            User user = (User) request.getSession().getAttribute("user");
-            model.addAttribute("name", user.getUserName());
-            model.addAttribute("email", user.getEmail());
-            destination="profil";
+            if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("name", user.getUserName());
+                model.addAttribute("email", user.getEmail());
+                destination="profil";
+            }
+            else{
+                model.addAttribute("connection", new Connection());
+                destination="connection";
+            }
         }
         else{
             model.addAttribute("connection", new Connection());
@@ -83,6 +89,12 @@ public class ConnectionController {
     public @ResponseBody
     Iterable<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping(path="/disconnect")
+    public String disconnect(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/accueil";
     }
 
 }

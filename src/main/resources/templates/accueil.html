@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/accueil.css" />
-    <link rel="stylesheet" href="../static/css/header_UU.css" />
-    <link rel="stylesheet" href="../static/css/footer.css" />
+
+    <link rel="stylesheet" th:href="@{/css/accueil.css}" href="/css/accueil.css" />
+    <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
+
     <title>Accueil</title>
 </head>
 <body>
@@ -35,6 +37,10 @@
         </div>
     </div>
 
+    <div th:if="${isConnected == 'Profil'}">
+        <a th:href="@{'/disconnect'}">Deconnexion</a>
+    </div>
+
     <div class="content">
         <h1>Bienvenue chez nous !</h1>
         <div class="nous">
@@ -45,13 +51,13 @@
             <h2>Venez découvrir nos dernières soluces !</h2>
             <div class="jeux">
                 <div class="jeu1">
-                    <a href="Pokemon.html">
-                        <img src="/img/Pokémon_Diamant_et_Perle_Logo.png">
+                    <a th:href="@{'/game/' + ${momentGame1.id}}">
+                        <img th:src="@{${momentGame1.box}}">
                     </a>
                 </div>
                 <div class="jeu2">
-                    <a href="Rambo.html">
-                        <img src="/img/Rambo-movie-logo.png">
+                    <a th:href="@{'/game/' + ${momentGame2.id}}">
+                        <img th:src="@{${momentGame2.box}}">
                     </a>
                 </div>
             </div>
