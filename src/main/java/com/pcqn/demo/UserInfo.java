@@ -8,6 +8,8 @@ public class UserInfo implements Serializable {
     @OneToOne
     private User user;
 
+    @ManyToOne
+    private Game game;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,8 +24,12 @@ public class UserInfo implements Serializable {
     @Column(name="Telephone", nullable = true)
     private String telephone;
 
-    @Column(name="Jeu_Prefere", nullable = true)
-    private String favGame;
+    public UserInfo() {
+    }
+
+    public UserInfo(User user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;
@@ -57,11 +63,19 @@ public class UserInfo implements Serializable {
         this.telephone = telephone;
     }
 
-    public String getFavGame() {
-        return favGame;
+    public User getUser() {
+        return user;
     }
 
-    public void setFavGame(String favGame) {
-        this.favGame = favGame;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

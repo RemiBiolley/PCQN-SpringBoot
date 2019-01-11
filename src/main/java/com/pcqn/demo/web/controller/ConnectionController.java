@@ -7,11 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,6 +18,9 @@ public class ConnectionController {
 
     @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    private UserInfoRepository userInfoRepository;
 
     @GetMapping("/connection")
     public String connectionForm(Model model, HttpServletRequest request) {
@@ -65,7 +65,7 @@ public class ConnectionController {
     }
 
     @PostMapping("/inscription")
-    public String addNewUser(@ModelAttribute Connection connection, Model model, HttpServletRequest request){
+    public String addNewUser(@ModelAttribute Connection connection, HttpServletRequest request){
         User n = new User();
 
         n.setUserName(connection.getUsername());
@@ -73,15 +73,13 @@ public class ConnectionController {
         n.setRandomAvatar();
         n.setEmail(connection.getEmail());
         userRepository.save(n);
-
         request.getSession().setAttribute("user", n);
 
+        UserInfo userInfo = new UserInfo(n);
+        userInfoRepository.save(userInfo);
 
-        List<Game> momentGames = gameRepository.findGameByMomentGame(1);
-        model.addAttribute("momentGame1", momentGames.get(0));
-        model.addAttribute("momentGame2", momentGames.get(1));
-        model.addAttribute("user", n);
-        return "profil";
+
+        return "redirect:/profil";
     }
 
     @GetMapping(path="/disconnect")

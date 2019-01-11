@@ -10,6 +10,9 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private Collection<Note> notes;
 
+    @OneToMany(mappedBy = "game")
+    private Collection<UserInfo> userInfos;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -95,5 +98,21 @@ public class Game {
 
     public void increaseNoteCounter(){
         this.setNbreNotes(this.nbreNotes+1);
+    }
+
+    public Collection<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Collection<Note> notes) {
+        this.notes = notes;
+    }
+
+    public Collection<UserInfo> getUserInfos() {
+        return userInfos;
+    }
+
+    public void setUserInfos(Collection<UserInfo> userInfos) {
+        this.userInfos = userInfos;
     }
 }
