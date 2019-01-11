@@ -3,10 +3,11 @@ package com.pcqn.demo;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Game {
+public class Game implements Serializable {
     @OneToMany(mappedBy = "game")
     private Collection<Note> notes;
 

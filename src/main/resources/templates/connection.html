@@ -13,30 +13,8 @@
 <body>
 
 <div id="wrap">
-    <div class="header-haut">
-        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
-        <div class="infos">
-            <h2>Venez vous amuser avec nous !</h2>
-        </div>
-        <div class="menu-header">
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame1.name}"></div>
-            </a>
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
-            </a>
-            <a class="headerButtonA" href="/game">
-                <div class="headerButtonDiv">
-                    Autres
-                </div>
-            </a>
-            <a class="headerButtonA" href="/connection">
-                <div class="headerButtonDiv">
-                    Connexion / Inscription
-                </div>
-            </a>
-        </div>
-    </div>
+
+    <div th:replace="fragments/header_UU :: headerConnection"></div>
 
     <div class="content">
         <form class="signinform" action="#" th:action="@{/connection}" th:object="${connection}" method="post">
@@ -81,28 +59,7 @@
     </div>
 </div>
 
-<div class="menu-footer">
-    <a href="">
-        <div class="J1">
-            Tous droits réservés
-        </div>
-    </a>
-    <a href="">
-        <div class="J2">
-            Conditions d'utilisations
-        </div>
-    </a>
-    <a href="">
-        <div class="autres">
-            Nous contacter
-        </div>
-    </a>
-    <a href="">
-        <div class="profil">
-            Nos réseaux
-        </div>
-    </a>
+<div th:replace="fragments/footer :: footer"></div>
 
-</div>
 </body>
 </html>

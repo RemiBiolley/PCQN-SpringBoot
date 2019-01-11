@@ -15,33 +15,8 @@
 <body>
 
 <div id="wrap">
-    <div class="header-haut">
-        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
-        <div class="infos">
-            <h2>Venez vous amusez avec nous !</h2>
-        </div>
-        <div class="menu-header">
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame1.name}"></div>
-            </a>
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
-            </a>
-            <a class="headerButtonA" href="/game">
-                <div class="headerButtonDiv">
-                    Autres
-                </div>
-            </a>
-            <a class="headerButtonA" th:href="${destination}">
-                <div class="headerButtonDiv" th:text="${isConnected}">
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <div th:if="${isConnected == 'Profil'}">
-        <a th:href="@{'/disconnect'}">Deconnexion</a>
-    </div>
+    <div th:replace="fragments/header_UU :: header"></div>
 
     <div class="content">
         <h1>Rambo</h1>
@@ -157,60 +132,12 @@
             </div>
         </div>
 
-        <div class = "comments">
-            <input type="text" class="myComment">
-            <input type="button" value="Publier" onclick="addComment();">
+        <div th:replace="fragments/comments :: comments"></div>
 
-            <th:block th:each="comment : ${comments}">
-                <div class="commentBlock">
-                    <input name="commentId" th:value="${comment.id}" class="invisible">
-                    <div class="commentWriter" th:text="${comment.user.userName}"></div>
-                    <div class="commentContent" th:text="${comment.content}"></div>
-                    <div class="commentDate" th:text="${comment.date}"></div>
-                    <th:block th:if="${comment.getChildrenComment().size() != 0}">
-                        <input type="button" value="Afficher les réponses" name="showHide">
-                    </th:block>
-                    <div class="invisible">
-                        <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
-                            <div class="responseWriter" th:text="${response.user.userName}"></div>
-                            <div class="responseContent" th:text="${response.content}"></div>
-                            <div class="responseDate" th:text="${response.date}"></div>
-                        </div>
-                    </div>
-                    <input type="button" value="Répondre" name="displayResponse">
-                    <div class="responseBlockWrite">
-                        Ecrivez votre réponse ci-dessous :
-                        <input type="text" class="myComment">
-                        <input type="button" value="Publier" name="addResponse">
-                    </div>
-                </div>
-            </th:block>
-        </div>
     </div>
 </div>
-<div class="menu-footer">
-    <a href="">
-        <div class="J1">
-            Tous droits réservés
-        </div>
-    </a>
-    <a href="conditions">
-        <div class="J2">
-            Conditions d'utilisations
-        </div>
-    </a>
-    <a href="">
-        <div class="autres">
-            Nous contacter
-        </div>
-    </a>
-    <a href="">
-        <div class="profil">
-            Nos réseaux
-        </div>
-    </a>
 
-</div>
+<div th:replace="fragments/footer :: footer"></div>
 
 </div>
 

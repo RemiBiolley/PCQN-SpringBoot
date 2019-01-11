@@ -28,6 +28,7 @@ public class ConnectionController {
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
                 User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("user", user);
                 destination="profil";
             }
@@ -56,8 +57,10 @@ public class ConnectionController {
         if(userRepository.existsUserByEmailAndPassword(connection.getEmail(), connection.getPassword())){
             User user = userRepository.findUserByEmailAndPassword(connection.getEmail(), connection.getPassword());
             request.getSession().setAttribute("user", user);
-            model.addAttribute("user", user);
-            return "profil";
+            request.getSession().setAttribute("avatar",user.getAvatar());
+
+            //model.addAttribute("user", user);
+            return "redirect:/profil";
         }
         else{
             return "connection";
@@ -74,6 +77,7 @@ public class ConnectionController {
         n.setEmail(connection.getEmail());
         userRepository.save(n);
         request.getSession().setAttribute("user", n);
+        request.getSession().setAttribute("avatar", n.getAvatar());
 
         UserInfo userInfo = new UserInfo(n);
         userInfoRepository.save(userInfo);

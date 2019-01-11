@@ -30,6 +30,8 @@ public class GameController {
     public String displayGameList(HttpServletRequest request, Model model){
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
             }
@@ -56,6 +58,8 @@ public class GameController {
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
             }

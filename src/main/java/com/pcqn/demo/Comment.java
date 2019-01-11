@@ -1,11 +1,12 @@
 package com.pcqn.demo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable {
     @ManyToOne
     @JoinColumn(name="comment_id", referencedColumnName = "id")
     private Comment parentComment;

@@ -67,4 +67,12 @@ $("input[class='showHideComments']").on("click",function(){
     }
 })
 
+$(function () {
+    jQuery(document).ready(function() {
+        if ($("input[name='commentsNumb']").val() <= 4) {
+            $("input[class='showHideComments']").css("display", "none");
+        }
+    })
+});
+
 

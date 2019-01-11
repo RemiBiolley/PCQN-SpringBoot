@@ -35,6 +35,7 @@ public class ProfilController {
                 UserInfo userInfo = userInfoRepository.findAllByUserId(user.getId());
                 List<String> availableGames = gameRepository.findGamesNames();
 
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("availableGames", availableGames);
                 model.addAttribute("userInfo", userInfo);
                 model.addAttribute("user", user);

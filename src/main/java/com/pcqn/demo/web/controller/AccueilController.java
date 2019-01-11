@@ -28,6 +28,8 @@ public class AccueilController {
     public String displayAccueil(Model model, HttpServletRequest request){
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
             }

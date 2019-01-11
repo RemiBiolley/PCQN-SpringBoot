@@ -3,7 +3,7 @@
     padding: 1%;
 }
 
-.header-haut img{
+#logo{
     width: 100%;
 }
 
@@ -72,15 +72,29 @@
     margin: 1%;
     text-decoration : none;
     background-color: #323232;
+
 }
 
 .menu-header .headerButtonDiv {
     color: white;
     font-size: 100%;
     font-weight: bold;
-    text-align: center;
 }
 
 .menu-header .headerButtonA:hover{
     background-color: #720c2b;
+}
+
+.avatarHeader{
+    width: 25%;
+    height: auto;
+    border-style: solid;
+    border-color: #720c2b;
+}
+
+#button3{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
 }
