@@ -34,11 +34,20 @@
 <div th:replace="fragments/header_UU :: headerProfil"></div>
 
 <div class="content">
-    <h1>Votre Profil : </h1>
+    <div th:text="${myProfile}"></div>
+    <th:block th:if="${myProfile}=='me'">
+        <h1>Votre Profil : </h1>
+    </th:block>
+    <th:block th:unless="${myProfile}=='me'">
+        <h1 th:text="'Profil de ' + ${user.userName}"></h1>
+    </th:block>
     <div class="you">
         <div class="infos">
-            <h2 class="name" th:text="${user.userName}" >Coucou</h2>
-            <h2 class="email" th:text="${user.email}"> Hey </h2>
+
+            <h2 class="name" th:text="${user.userName}" ></h2>
+            <h3 class="rank" th:text="${user.rank}"></h3>
+            <h3 class="points" th:text="${user.points} + 'pts'"></h3>
+            <h2 class="email" th:text="${user.email}"></h2>
 
             <img class="avatar" th:src="@{${user.avatar}}">
             <th:block th:if="${userInfo.game} != null">
@@ -47,45 +56,65 @@
 
         </div>
 
-        <div class="modifInfos">
-            <input type="button" value="Modifier les infos" name="modifInfos">
-            <div class="modifInfosForm">
-                <label for="changeAvatar">Pour changer ton avatar, ça se passe ici !</label><input type="file" id="changeAvatar">
-                <input type="button" id="changeAvatarSub" value="Change moi ça !" onclick="changeAvatar();">
-                <br>
-                <label for="password">Change ton mdp !</label><input type="text" id="password">
-                <br>
-                <label for="passwordConfirm">Confirme le mdp</label><input type="text" id="passwordConfirm">
-                <input type="button" id="passwordSub" value="Change moi ça !" onclick="changePassword();">
+        <th:block th:if="${myProfile}=='me'">
+            <div class="modifInfos">
+                <input type="button" value="Modifier les infos" name="modifInfos">
+                <div class="modifInfosForm">
+                    <label for="changeAvatar">Pour changer ton avatar, ça se passe ici !</label><input type="file" id="changeAvatar">
+                    <input type="button" id="changeAvatarSub" value="Change moi ça !" onclick="changeAvatar();">
+                    <br>
+                    <label for="password">Change ton mdp !</label><input type="text" id="password">
+                    <br>
+                    <label for="passwordConfirm">Confirme le mdp</label><input type="text" id="passwordConfirm">
+                    <input type="button" id="passwordSub" value="Change moi ça !" onclick="changePassword();">
+                </div>
             </div>
-        </div>
-        <div class="personalInfos">
-            <input type="button" value="Modifier tes infos persos" name="modifPersonalInfos">
-            <div class="personalInfosForm">
+            <div class="personalInfos">
+                <input type="button" value="Modifier tes infos persos" name="modifPersonalInfos">
+                <div class="personalInfosForm">
+                    <th:block th:if="${userInfo.firstName}==null">
+                        <label for="firstName">Comment tu t'appelles ? </label><input type="text" id="firstName"><input type="text" id="lastName">
+                        <input type="button" id="nameSub" value="Change moi ça !" onclick="changeName();">
+                    </th:block>
+                    <th:block th:unless="${userInfo.firstName}==null">
+                        <div th:text="'Ton nom : ' + ${userInfo.firstName} + ' ' + ${userInfo.lastName}"></div>
+                    </th:block>
+                    <br>
+                    <th:block th:if="${userInfo.telephone}==null">
+                        <label for="tel">Donne ton numéro et tes amis pourront te contacter !</label>
+                    </th:block>
+                    <th:block th:unless="${userInfo.telephone}==null">
+                        <div th:text="'Ton téléphone : ' + ${userInfo.telephone}"></div>
+                        <label for="tel">Une erreur dans ton num' ? Tu peux toujours changer</label>
+                    </th:block>
+                    <input type="text" id="tel">
+                    <input type="button" id="telSub" value="Change moi ça !" onclick="changeTel();">
+                    <br>
+                    <input type="hidden" th:value="${availableGames}">
+                    <label for="favoriteGame">Dis moi à quoi tu joues et je saurai qui tu es ... </label><input type="text" id="favoriteGame">
+                    <input type="button" id="favoriteGameSub" value="Change moi ça !" onclick="changeFavoriteGame();">
+
+                </div>
+            </div>
+        </th:block>
+        <th:block th:unless="${myProfile}=='me'">
+            <div class="otherInfos">
                 <th:block th:if="${userInfo.firstName}==null">
-                    <label for="firstName">Comment tu t'appelles ? </label><input type="text" id="firstName"><input type="text" id="lastName">
-                    <input type="button" id="nameSub" value="Change moi ça !" onclick="changeName();">
+                    <span>Nom : non renseigné</span>
                 </th:block>
                 <th:block th:unless="${userInfo.firstName}==null">
-                    <div th:text="'Ton nom : ' + ${userInfo.firstName} + ' ' + ${userInfo.lastName}"></div>
+                    <div th:text="'Nom : ' + ${userInfo.firstName} + ' ' + ${userInfo.lastName}"></div>
                 </th:block>
                 <br>
                 <th:block th:if="${userInfo.telephone}==null">
-                    <label for="tel">Donne ton numéro et tes amis pourront te contacter !</label>
+                    <span>N° de téléphone : non renseigné</span>
                 </th:block>
                 <th:block th:unless="${userInfo.telephone}==null">
-                    <div th:text="'Ton téléphone : ' + ${userInfo.telephone}"></div>
-                    <label for="tel">Une erreur dans ton num' ? Tu peux toujours changer</label>
+                    <div th:text="'N° de téléphone : ' + ${userInfo.telephone}"></div>
                 </th:block>
-                <input type="text" id="tel">
-                <input type="button" id="telSub" value="Change moi ça !" onclick="changeTel();">
-                <br>
-                <input type="hidden" th:value="${availableGames}">
-                <label for="favoriteGame">Dis moi à quoi tu joues et je saurai qui tu es ... </label><input type="text" id="favoriteGame">
-                <input type="button" id="favoriteGameSub" value="Change moi ça !" onclick="changeFavoriteGame();">
-
             </div>
-        </div>
+        </th:block>
+
     </div>
 </div>
 

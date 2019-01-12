@@ -4,10 +4,7 @@ import com.pcqn.demo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -39,6 +36,7 @@ public class ProfilController {
                 model.addAttribute("availableGames", availableGames);
                 model.addAttribute("userInfo", userInfo);
                 model.addAttribute("user", user);
+                model.addAttribute("myProfile", "me");
 
                 return "profil";
             }
@@ -51,6 +49,47 @@ public class ProfilController {
             model.addAttribute("connection", new Connection());
             return "connection";
         }
+    }
+
+    @GetMapping("/profil/{id}")
+    public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
+        User user = null;
+
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("user")!=null){
+                user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
+                model.addAttribute("isConnected", "Profil");
+                model.addAttribute("destination", "/profil");
+            }
+            else{
+                model.addAttribute("isConnected", "Connexion / Inscription");
+                model.addAttribute("destination", "/connection");
+            }
+        }
+        else{
+            model.addAttribute("isConnected", "Connexion / Inscription");
+            model.addAttribute("destination", "/connection");
+        }
+
+        List<Game> momentGames = gameRepository.findGameByMomentGame(1);
+        model.addAttribute("momentGame1", momentGames.get(0));
+        model.addAttribute("momentGame2", momentGames.get(1));
+
+        User userProfil = userRepository.findUserById(id);
+        UserInfo userInfo = userInfoRepository.findAllByUserId(userProfil.getId());
+
+        model.addAttribute("user", userProfil);
+        model.addAttribute("userInfo",userInfo);
+
+        if(!userProfil.getId().equals(userProfil.getId())){
+            model.addAttribute("myProfile", "notMe");
+        }
+        else{
+            model.addAttribute("myProfile", "me");
+        }
+
+        return "profil";
     }
 
     @PostMapping("/changeAvatar")

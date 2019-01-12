@@ -7,6 +7,11 @@ import java.util.Collection;
 
 @Entity
 public class User implements Serializable{
+    public User(){
+        this.points = 0;
+        this.rank = "Bleusaille";
+    }
+
     @OneToOne(mappedBy = "user")
     private UserInfo userInfo;
 
@@ -34,6 +39,12 @@ public class User implements Serializable{
 
     @Column(name="Avatar", nullable = true)
     private String avatar;
+
+    @Column(name="points", nullable = false)
+    private Integer points;
+
+    @Column(name="rang", nullable = false)
+    private String rank;
 
     public Integer getId() {
         return id;
@@ -117,5 +128,40 @@ public class User implements Serializable{
 
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public void checkRank(){
+        Integer points = this.points;
+        if(points<=5){
+            this.setRank("Bleusaille");
+        }
+        else if(points<=20){
+            this.setRank("Apprenti aventurier");
+        }
+        else if(points<=40){
+            this.setRank("Plombier moustachu");
+        }
+        else if(points<=100){
+            this.setRank("MasterChief");
+        }
+        else{
+            this.setRank("Dieu de la guerre");
+        }
     }
 }

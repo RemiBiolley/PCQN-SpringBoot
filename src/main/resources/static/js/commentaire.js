@@ -22,7 +22,7 @@ function addComment(){
 }
 
 $("input[name='displayResponse']").on("click", function(){
-    $(this).next().css('display','block');
+    $(this).siblings(".responseBlockWrite").eq(0).css('display','block');
     $(this).toggle();
 });
 
@@ -47,11 +47,11 @@ $("input[name='addResponse']").on("click", function(){
 
 $("input[name='showHideResponses']").on("click",function(){
     if($(this).val()=="Afficher les réponses"){
-        $(this).next().css("display", "block");
+        $(this).prev().prev().css("display", "block");
         $(this).val("Cacher les réponses");
     }
     else{
-        $(this).next().css("display", "none");
+        $(this).prev().prev().css("display", "none");
         $(this).val("Afficher les réponses");
     }
 })
