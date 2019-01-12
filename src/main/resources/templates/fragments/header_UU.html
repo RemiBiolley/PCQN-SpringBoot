@@ -50,16 +50,26 @@
                     Autres
                 </div>
             </a>
-            <a class="headerButtonA" href="/profil" id="button3">
-                <img th:src="@{${avatar}}" class="avatarHeader">
-                <div class="headerButtonDiv">
-                    Profil
-                </div>
-            </a>
+            <th:block th:if="${destination}=='/profil'">
+                <a class="headerButtonA" th:href="${destination}" id="button3">
+                    <img th:src="@{${avatar}}" class="avatarHeader">
+                    <div class="headerButtonDiv" th:text="${isConnected}">
+                    </div>
+                </a>
+            </th:block>
+            <th:block th:unless="${destination}=='/profil'">
+                <a class="headerButtonA" th:href="${destination}" id="button3">
+                    <div class="headerButtonDiv" th:text="${isConnected}">
+                    </div>
+                </a>
+            </th:block>
+
         </div>
     </div>
 
-    <a th:href="@{'/disconnect'}">Deconnexion</a>
+    <th:block th:if="${myProfile}=='me'">
+        <a th:href="@{'/disconnect'}">Deconnexion</a>
+    </th:block>
 </div>
 
 <div th:fragment="headerConnection">

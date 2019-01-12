@@ -37,16 +37,22 @@ public class ProfilController {
                 model.addAttribute("userInfo", userInfo);
                 model.addAttribute("user", user);
                 model.addAttribute("myProfile", "me");
+                model.addAttribute("isConnected", "Profil");
+                model.addAttribute("destination", "/profil");
 
                 return "profil";
             }
             else{
                 model.addAttribute("connection", new Connection());
+                model.addAttribute("isConnected", "Connexion / Inscription");
+                model.addAttribute("destination", "/connection");
                 return "connection";
             }
         }
         else{
             model.addAttribute("connection", new Connection());
+            model.addAttribute("isConnected", "Connexion / Inscription");
+            model.addAttribute("destination", "/connection");
             return "connection";
         }
     }
@@ -82,12 +88,18 @@ public class ProfilController {
         model.addAttribute("user", userProfil);
         model.addAttribute("userInfo",userInfo);
 
-        if(!userProfil.getId().equals(userProfil.getId())){
-            model.addAttribute("myProfile", "notMe");
+        if(user!=null){
+            if(!userProfil.getId().equals(user.getId())){
+                model.addAttribute("myProfile", "notMe");
+            }
+            else{
+                model.addAttribute("myProfile", "me");
+            }
         }
         else{
-            model.addAttribute("myProfile", "me");
+            model.addAttribute("myProfile", "notMe");
         }
+
 
         return "profil";
     }

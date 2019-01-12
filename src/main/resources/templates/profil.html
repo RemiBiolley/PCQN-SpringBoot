@@ -34,7 +34,6 @@
 <div th:replace="fragments/header_UU :: headerProfil"></div>
 
 <div class="content">
-    <div th:text="${myProfile}"></div>
     <th:block th:if="${myProfile}=='me'">
         <h1>Votre Profil : </h1>
     </th:block>

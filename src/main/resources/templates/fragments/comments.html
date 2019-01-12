@@ -8,20 +8,28 @@
                 <div class="commentBlock" th:style="'display:'+${disp}+';'">
                     <input name="commentId" th:value="${comment.id}" class="invisible">
                     <div class="commentWriter">
-                        <div class="writerName" th:text="${comment.user.userName}"></div>
+                        <a  th:href="'/profil/' + ${comment.user.id}">
+                            <div class="writerName" th:text="${comment.user.userName}"></div>
+                        </a>
                         <div class="writerRank" th:text="${comment.user.rank}"></div>
                         <div class="writerPoints" th:text="${comment.user.points} + 'pts'"></div>
-                        <img class="writerAvatar" th:src="@{${comment.user.avatar}}">
+                        <a  th:href="'/profil/' + ${comment.user.id}">
+                            <img class="writerAvatar" th:src="@{${comment.user.avatar}}">
+                        </a>
                     </div>
                     <div class="commentContent" th:text="${comment.content}"></div>
                     <div class="commentDate" th:text="${comment.date}"></div>
                     <div class="invisible">
                         <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
                             <div class="responseWriter">
-                                <div class="writerName" th:text="${response.user.userName}"></div>
+                                <a  th:href="'/profil/' + ${response.user.id}">
+                                    <div class="writerName" th:text="${response.user.userName}"></div>
+                                </a>
                                 <div class="writerRank" th:text="${response.user.rank}"></div>
                                 <div class="writerPoints" th:text="${response.user.points} + 'pts'"></div>
-                                <img class="writerAvatar" th:src="@{${response.user.avatar}}">
+                                <a  th:href="'/profil/' + ${response.user.id}">
+                                    <img class="writerAvatar" th:src="@{${response.user.avatar}}">
+                                </a>
                             </div>
                             <div class="responseContent" th:text="${response.content}"></div>
                             <div class="responseDate" th:text="${response.date}"></div>
@@ -47,20 +55,28 @@
                 <div class="commentBlock" th:style="'display:'+${disp}+';'">
                     <input name="commentId" th:value="${comment.id}" class="invisible">
                     <div class="commentWriter">
-                        <div class="writerName" th:text="${comment.user.userName}"></div>
+                        <a  th:href="'/profil/' + ${comment.user.id}">
+                            <div class="writerName" th:text="${comment.user.userName}"></div>
+                        </a>
                         <div class="writerRank" th:text="${comment.user.rank}"></div>
                         <div class="writerPoints" th:text="${comment.user.points} + 'pts'"></div>
-                        <img class="writerAvatar" th:src="@{${comment.user.avatar}}">
+                        <a  th:href="'/profil/' + ${comment.user.id}">
+                            <img class="writerAvatar" th:src="@{${comment.user.avatar}}">
+                        </a>
                     </div>
                     <div class="commentContent" th:text="${comment.content}"></div>
                     <div class="commentDate" th:text="${comment.date}"></div>
                     <div class="invisible">
                         <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
                             <div class="responseWriter">
-                                <div class="writerName" th:text="${response.user.userName}"></div>
+                                <a  th:href="'/profil/' + ${response.user.id}">
+                                    <div class="writerName" th:text="${response.user.userName}"></div>
+                                </a>
                                 <div class="writerRank" th:text="${response.user.rank}"></div>
                                 <div class="writerPoints" th:text="${response.user.points} + 'pts'"></div>
-                                <img class="writerAvatar" th:src="@{${response.user.avatar}}">
+                                <a  th:href="'/profil/' + ${response.user.id}">
+                                    <img class="writerAvatar" th:src="@{${response.user.avatar}}">
+                                </a>
                             </div>
                             <div class="responseContent" th:text="${response.content}"></div>
                             <div class="responseDate" th:text="${response.date}"></div>
