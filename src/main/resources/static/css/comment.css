@@ -3,19 +3,16 @@
     border-radius: 19px;
     margin :2%;
     padding: 1%;
+    width: 50%;
     padding-bottom: 10px;
     position: relative;
-}
-
-.comments:after {
-    opacity: 0.8;
 }
 
 .commentBlock{
     margin:2%;
     background-color: #720c2b;
     opacity : 1;
-    width: 50%;
+    width: 80%;
     color: white;
     padding: 0.5%;
     border-bottom-right-radius: 10%;
@@ -57,4 +54,10 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+}
+
+h1{
+    color: #720c2b ;
+    font-weight: bold;
+    font-size: 250%;
 }

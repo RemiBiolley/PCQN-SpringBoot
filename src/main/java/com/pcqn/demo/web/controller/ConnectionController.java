@@ -4,12 +4,12 @@ import com.pcqn.demo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class ConnectionController {
@@ -21,6 +21,9 @@ public class ConnectionController {
 
     @Autowired
     private UserInfoRepository userInfoRepository;
+
+    @Autowired
+    private UserTypeRepository userTypeRepository;
 
     @GetMapping("/connection")
     public String connectionForm(Model model, HttpServletRequest request) {
@@ -67,7 +70,7 @@ public class ConnectionController {
         }
     }
 
-    @PostMapping("/inscription")
+    /*@PostMapping("/inscription")
     public String addNewUser(@ModelAttribute Connection connection, HttpServletRequest request){
         User n = new User();
 
@@ -84,6 +87,53 @@ public class ConnectionController {
 
 
         return "redirect:/profil";
+    }*/
+
+    @PostMapping("/inscription")
+    @ResponseBody
+    public String addNewUser(@ModelAttribute Connection connection, @RequestParam String password, @RequestParam String passwordV, @RequestParam String email, @RequestParam String userName, HttpServletRequest request){
+
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        boolean isMailCorrect = VALID_EMAIL_ADDRESS_REGEX.matcher(email).matches();
+
+        System.out.println("ici");
+
+        String result;
+
+        if(isMailCorrect && userRepository.findUserByEmail(email) == null){
+            if(password.equals(passwordV)){
+                if(userRepository.findUserByUserName(userName)==null){
+                    User n = new User();
+                    UserType nType = userTypeRepository.findUserTypeById(1);
+
+                    n.setUserName(userName);
+                    n.setPassword(password);
+                    n.setRandomAvatar();
+                    n.setEmail(email);
+                    n.setUserType(nType);
+                    userRepository.save(n);
+
+                    request.getSession().setAttribute("user", n);
+                    request.getSession().setAttribute("avatar", n.getAvatar());
+
+                    UserInfo userInfo = new UserInfo(n);
+                    userInfoRepository.save(userInfo);
+                    result ="done";
+                    System.out.println(result);
+                }
+                else{
+                    result="userName";
+                }
+            }
+            else{
+                result = "password";
+            }
+        }
+        else{
+            result="mail";
+        }
+    return result;
     }
 
     @GetMapping(path="/disconnect")

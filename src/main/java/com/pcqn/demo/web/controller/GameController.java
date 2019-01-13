@@ -34,6 +34,7 @@ public class GameController {
                 model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
+                model.addAttribute("user", user);
             }
             else{
                 model.addAttribute("isConnected", "Connexion / Inscription");
@@ -62,6 +63,7 @@ public class GameController {
                 model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
+                model.addAttribute("user", user);
             }
             else{
                 model.addAttribute("isConnected", "Connexion / Inscription");

@@ -1,5 +1,7 @@
 <div th:fragment="comments">
+
     <div class = "comments">
+        <h1>Section commentaires :</h1>
         <input type="text" id="myComment">
         <input type="button" value="Publier" onclick="addComment();">
         <input type="hidden" th:value="${comments.size()}" name="commentsNumb">

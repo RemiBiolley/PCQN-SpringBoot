@@ -67,6 +67,7 @@ public class ProfilController {
                 model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
+                model.addAttribute("user", user);
             }
             else{
                 model.addAttribute("isConnected", "Connexion / Inscription");

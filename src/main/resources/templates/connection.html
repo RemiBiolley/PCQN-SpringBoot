@@ -8,7 +8,11 @@
     <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/js/connection.js"></script>
 </head>
 <body>
 
@@ -36,6 +40,7 @@
             <div class="label">
                 <label for="emailSub">Email : </label>
                 <input type="email" th:field="*{email}" class="email" id="emailSub">
+                <div id="emailFailed" class="fail"></div>
             </div>
             <div class="label">
                 <label for="passwordSub">Mot de passe : </label>
@@ -44,16 +49,15 @@
             <div class="label">
                 <label for="passwordVerif">Confirmer votre mot de passe : </label>
                 <input type="password" class="password" id="passwordVerif">
+                <div id="passwordFailed" class="fail"></div>
             </div>
             <div class="label">
                 <label for="usernameSub">Username : </label>
                 <input type="text" th:field="*{username}" class="username" id="usernameSub">
+                <div id="userNameFailed" class="fail"></div>
             </div>
-
-            <label for="age">Je certifie avoir plus de 21 ans :</label>
-            <input type="checkbox" id="age">
             <br>
-            <input type="submit" value="S'inscrire" id="submit">
+            <input type="button" value="S'inscrire" id="submit" onclick="submitSub();">
         </form>
 
     </div>

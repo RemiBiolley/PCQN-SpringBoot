@@ -117,7 +117,7 @@ public class User implements Serializable{
         defaultAvatars.add("https://mir-s3-cdn-cf.behance.net/project_modules/disp/3eb13e21340091.562ff8a21c1f8.jpg");
         defaultAvatars.add("https://mir-s3-cdn-cf.behance.net/project_modules/disp/3a11a921340091.562ff8a218e81.jpg");
 
-        int random = (int)(Math.random() * 3 + 0);
+        int random = (int)(Math.random() * 4 + 0);
 
         this.avatar = defaultAvatars.get(random);
     }
