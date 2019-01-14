@@ -12,16 +12,16 @@ public class User implements Serializable{
         this.rank = "Bleusaille";
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private UserInfo userInfo;
 
     @ManyToOne
     private UserType userType;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Note> notes;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Comment> comments;
 
     @Id

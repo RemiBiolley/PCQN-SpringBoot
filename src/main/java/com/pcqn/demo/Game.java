@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Entity
 public class Game implements Serializable {
-    @OneToMany(mappedBy = "game")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
     private Collection<Note> notes;
 
     @OneToMany(mappedBy = "game")

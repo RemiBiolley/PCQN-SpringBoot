@@ -11,7 +11,7 @@ public class Comment implements Serializable {
     @JoinColumn(name="comment_id", referencedColumnName = "id")
     private Comment parentComment;
 
-    @OneToMany(mappedBy = "parentComment")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentComment")
     private Collection<Comment> childrenComment;
 
     @ManyToOne

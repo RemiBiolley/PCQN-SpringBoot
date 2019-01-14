@@ -73,4 +73,11 @@ public class CommentController {
 
         request.getSession().setAttribute("user", userDB);
     }
+
+    @PostMapping("/eraseComment")
+    @ResponseBody
+    public void eraseComment(@RequestParam Integer commentId){
+        Comment erasedComment = commentRepository.findCommentById(commentId);
+        commentRepository.delete(erasedComment);
+    }
 }

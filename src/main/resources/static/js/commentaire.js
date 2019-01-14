@@ -22,7 +22,7 @@ function addComment(){
 }
 
 $("input[name='displayResponse']").on("click", function(){
-    $(this).siblings(".responseBlockWrite").eq(0).css('display','block');
+    $(this).parent().siblings(".responseBlockWrite").eq(0).css('display','block');
     $(this).toggle();
 });
 
@@ -47,11 +47,11 @@ $("input[name='addResponse']").on("click", function(){
 
 $("input[name='showHideResponses']").on("click",function(){
     if($(this).val()=="Afficher les réponses"){
-        $(this).prev().prev().css("display", "block");
+        $(this).parent().prev().prev().css("display", "block");
         $(this).val("Cacher les réponses");
     }
     else{
-        $(this).prev().prev().css("display", "none");
+        $(this).parent().prev().prev().css("display", "none");
         $(this).val("Afficher les réponses");
     }
 })
@@ -74,5 +74,26 @@ $(function () {
         }
     })
 });
+
+$("input[name='eraseComment']").on("click", function(){
+    var commentId = $(this).parent().siblings($("input[name='commentId']")).eq(0).val();
+    alert(commentId);
+    if(commentId){
+        $.ajax({
+            type: "POST",
+            url: "/eraseComment",
+            data: {commentId: commentId},
+            success: function(){
+                window.location.reload();
+            }
+
+        });
+    }
+    else{
+        alert("ma que ?");
+    }
+})
+
+
 
 

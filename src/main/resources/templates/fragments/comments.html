@@ -23,6 +23,7 @@
                     <div class="commentDate" th:text="${comment.date}"></div>
                     <div class="invisible">
                         <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
+                            <input name="commentId" th:value="${response.id}" class="invisible">
                             <div class="responseWriter">
                                 <a  th:href="'/profil/' + ${response.user.id}">
                                     <div class="writerName" th:text="${response.user.userName}"></div>
@@ -35,6 +36,11 @@
                             </div>
                             <div class="responseContent" th:text="${response.content}"></div>
                             <div class="responseDate" th:text="${response.date}"></div>
+                            <th:block th:if="${user}!=null">
+                                <div th:if="${user.userType.id==2 or user.userType.id==3}">
+                                    <input type="button" name="eraseComment" value="X" class="buttonsbutton">
+                                </div>
+                            </th:block>
                         </div>
                     </div>
                     <div class="responseBlockWrite">
@@ -42,10 +48,17 @@
                         <input type="text">
                         <input type="button" value="Publier" name="addResponse">
                     </div>
-                    <th:block th:if="${comment.getChildrenComment().size() != 0}">
-                        <input type="button" value="Afficher les réponses" name="showHideResponses">
-                    </th:block>
-                    <input type="button" value="Répondre" name="displayResponse">
+                    <div class = "buttons">
+                        <th:block th:if="${comment.getChildrenComment().size() != 0}">
+                            <input type="button" value="Afficher les réponses" name="showHideResponses" class="buttonsbutton">
+                        </th:block>
+                        <input type="button" value="Répondre" name="displayResponse" class="buttonsbutton">
+                        <th:block th:if="${user}!=null">
+                            <th:block th:if="${user.userType.id==2 or user.userType.id==3}">
+                                <input type="button" name="eraseComment" value="X" class="buttonsbutton">
+                            </th:block>
+                        </th:block>
+                    </div>
                 </div>
             </th:block>
 
@@ -70,6 +83,7 @@
                     <div class="commentDate" th:text="${comment.date}"></div>
                     <div class="invisible">
                         <div class="responseBlock" th:each="response : ${comment.getChildrenComment()}">
+                            <input name="commentId" th:value="${response.id}" class="invisible">
                             <div class="responseWriter">
                                 <a  th:href="'/profil/' + ${response.user.id}">
                                     <div class="writerName" th:text="${response.user.userName}"></div>
@@ -82,6 +96,11 @@
                             </div>
                             <div class="responseContent" th:text="${response.content}"></div>
                             <div class="responseDate" th:text="${response.date}"></div>
+                            <th:block th:if="${user}!=null">
+                                <div th:if="${user.userType.id==2 or user.userType.id==3}">
+                                    <input type="button" name="eraseComment" value="X" class="buttonsbutton">
+                                </div>
+                            </th:block>
                         </div>
                     </div>
                     <div class="responseBlockWrite">
@@ -89,10 +108,17 @@
                         <input type="text">
                         <input type="button" value="Publier" name="addResponse">
                     </div>
-                    <th:block th:if="${comment.getChildrenComment().size() != 0}">
-                        <input type="button" value="Afficher les réponses" name="showHideResponses">
-                    </th:block>
-                    <input type="button" value="Répondre" name="displayResponse">
+                    <div class = "buttons">
+                        <th:block th:if="${comment.getChildrenComment().size() != 0}">
+                            <input type="button" value="Afficher les réponses" name="showHideResponses" class="buttonsbutton">
+                        </th:block>
+                        <input type="button" value="Répondre" name="displayResponse" class="buttonsbutton">
+                        <th:block th:if="${user}!=null">
+                            <th:block th:if="${user.userType.id==2 or user.userType.id==3}">
+                                <input type="button" name="eraseComment" value="X" class="buttonsbutton">
+                            </th:block>
+                        </th:block>
+                    </div>
                 </div>
             </th:block>
         </th:block>
