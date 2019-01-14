@@ -36,6 +36,7 @@ public class ProfilController {
                 model.addAttribute("availableGames", availableGames);
                 model.addAttribute("userInfo", userInfo);
                 model.addAttribute("user", user);
+                model.addAttribute("userProfil", user);
                 model.addAttribute("myProfile", "me");
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
@@ -86,7 +87,7 @@ public class ProfilController {
         User userProfil = userRepository.findUserById(id);
         UserInfo userInfo = userInfoRepository.findAllByUserId(userProfil.getId());
 
-        model.addAttribute("user", userProfil);
+        model.addAttribute("userProfil", userProfil);
         model.addAttribute("userInfo",userInfo);
 
         if(user!=null){

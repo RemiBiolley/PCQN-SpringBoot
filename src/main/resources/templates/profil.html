@@ -38,17 +38,17 @@
         <h1>Votre Profil : </h1>
     </th:block>
     <th:block th:unless="${myProfile}=='me'">
-        <h1 th:text="'Profil de ' + ${user.userName}"></h1>
+        <h1 th:text="'Profil de ' + ${userProfil.userName}"></h1>
     </th:block>
     <div class="you">
         <div class="infos">
 
-            <h2 class="name" th:text="${user.userName}" ></h2>
-            <h3 class="rank" th:text="${user.rank}"></h3>
-            <h3 class="points" th:text="${user.points} + 'pts'"></h3>
-            <h2 class="email" th:text="${user.email}"></h2>
+            <h2 class="name" th:text="${userProfil.userName}" ></h2>
+            <h3 class="rank" th:text="${userProfil.rank}"></h3>
+            <h3 class="points" th:text="${userProfil.points} + 'pts'"></h3>
+            <h2 class="email" th:text="${userProfil.email}"></h2>
 
-            <img class="avatar" th:src="@{${user.avatar}}">
+            <img class="avatar" th:src="@{${userProfil.avatar}}">
             <th:block th:if="${userInfo.game} != null">
                 <img class="jaquette" th:src="@{${userInfo.game.box}}">
             </th:block>

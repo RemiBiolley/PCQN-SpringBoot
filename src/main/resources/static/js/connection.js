@@ -21,7 +21,7 @@ function submitSub() {
                     }
                     else if(result==="userName") {
                         $('.fail').html("");
-                        $('#userNameFailed').html("Nom d'utilisateur déjà utilisé");
+                        $('#userNameFailed').html("Nom d'utilisateur déjà utilisé ou trop long");
                     }
                     else if(result==="done"){
                         alert("hahah");

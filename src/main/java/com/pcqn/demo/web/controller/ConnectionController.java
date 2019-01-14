@@ -27,7 +27,7 @@ public class ConnectionController {
 
     @GetMapping("/connection")
     public String connectionForm(Model model, HttpServletRequest request) {
-        String destination="error";
+        String destination;
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
                 User user = (User) request.getSession().getAttribute("user");
@@ -62,7 +62,6 @@ public class ConnectionController {
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("avatar",user.getAvatar());
 
-            //model.addAttribute("user", user);
             return "redirect:/profil";
         }
         else{
@@ -103,7 +102,7 @@ public class ConnectionController {
 
         if(isMailCorrect && userRepository.findUserByEmail(email) == null){
             if(password.equals(passwordV)){
-                if(userRepository.findUserByUserName(userName)==null){
+                if(userRepository.findUserByUserName(userName)==null && userName.length()<16){
                     User n = new User();
                     UserType nType = userTypeRepository.findUserTypeById(1);
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" th:href="@{/css/gameList.css}" href="/css/gameList.css" />
+    <link rel="stylesheet" th:href="@{/css/adminPage.css}" href="/css/adminPage.css" />
     <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
 
@@ -38,12 +38,12 @@
         <div id="changeMomentGames">
             <span>Changer les jeux du moment :</span>
             <div th:text="${momentGame1.name}"></div>
-            <img th:src="@{${momentGame1.box}}">
+            <img th:src="@{${momentGame1.box}}" class="jaquette">
             <input id="changeMomentGame1" type="text" class="changeMomentGame">
             <input type="button" value="Changer ce jeu" name="buttonMomentGame">
             <br>
             <div th:text="${momentGame2.name}"></div>
-            <img th:src="@{${momentGame2.box}}">
+            <img th:src="@{${momentGame2.box}}" class="jaquette">
             <input id="changeMomentGame2" type="text" class="changeMomentGame">
             <input type="button" value="Changer ce jeu" name="buttonMomentGame">
             <input type="hidden" th:value="${availableGames}">
@@ -53,23 +53,38 @@
 
         <table>
             <tr>
-                <th>NOM</th>
-                <th>EDITEUR</th>
-                <th>NOTE</th>
+                <th>Avatar</th>
+                <th>Nom</th>
+                <th>Rang</th>
+                <th>Points</th>
+                <th>Type</th>
+                <th>Mail</th>
+                <th></th>
             </tr>
-            <tr th:each="game : ${games}">
+            <tr th:each="user1 : ${users}">
                 <td>
-                    <a th:href="@{'/game/' + ${game.id}}">
-                        <div th:text="${game.name}"></div>
+                    <a th:href="@{'/profil/' + ${user1.id}}">
+                        <img th:src="${user1.avatar}" class="pageAvatars">
                     </a>
                 </td>
-                <td th:text="${game.editeur}"></td>
-                <td>
-                    <div th:text="${game.note}"></div>
-                </td>
-                <td>
-                    <img th:src="@{${game.box}}">
-                </td>
+                <td th:text="${user1.userName}" class="userName"></td>
+                <td th:text="${user1.rank}"></td>
+                <td th:text="${user1.points} + 'pts'"></td>
+                <td th:text="${user1.userType.typeName}"></td>
+                <td th:text="${user1.email}"></td>
+                <th:block th:if="${user1.userType.id}==1">
+                    <td>
+                        <input type="button" value="Faire admin" name="promoteUser">
+                    </td>
+                    <td>
+                        <input type="button" value="Enlever utilisateur" name="removeUser">
+                    </td>
+                </th:block>
+                <th:block th:if="${user.userType.id}==3 and ${user1.userType.id}==2">
+                    <td>
+                        <input type="button" value="Enlever utilisateur" name="removeUser">
+                    </td>
+                </th:block>
             </tr>
         </table>
     </div>
@@ -77,5 +92,6 @@
     <div th:replace="fragments/footer :: footer"></div>
 </div>
 <script src="/js/adminPage.js" type="text/javascript"></script>
+<link rel="stylesheet" th:href="@{/css/adminPage.css}" href="/css/adminPage.css" />
 </body>
 </html>

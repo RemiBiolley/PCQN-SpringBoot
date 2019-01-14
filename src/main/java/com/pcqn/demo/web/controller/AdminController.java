@@ -20,6 +20,9 @@ public class AdminController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserTypeRepository userTypeRepository;
+
     @GetMapping("/adminPage")
     public String displayAdminPage(HttpServletRequest request, Model model) {
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
@@ -29,7 +32,7 @@ public class AdminController {
         if (request.getSession(false) != null) {
             User user = (User) request.getSession(false).getAttribute("user");
             if (user != null) {
-                if(user.getUserType().getId()==2){
+                if(user.getUserType().getId()==2  || user.getUserType().getId()==3){
                     List<User> users = userRepository.findAll();
                     List<Game> games = gameRepository.findAll();
                     List<String> availableGames = gameRepository.findGamesNames();
@@ -68,4 +71,22 @@ public class AdminController {
         gameRepository.save(removedGame);
         gameRepository.save(newGame);
     }
+
+    @PostMapping("/promote")
+    @ResponseBody
+    public void promote(@RequestParam String promotedUserName){
+        User promotedUser = userRepository.findUserByUserName(promotedUserName);
+        UserType adminType = userTypeRepository.findUserTypeById(2);
+
+        promotedUser.setUserType(adminType);
+        userRepository.save(promotedUser);
+    }
+
+    @PostMapping("/removeUser")
+    @ResponseBody
+    public void removeUser(@RequestParam String removedUserName){
+        User removedUser = userRepository.findUserByUserName(removedUserName);
+        userRepository.delete(removedUser);
+    }
+
 }
