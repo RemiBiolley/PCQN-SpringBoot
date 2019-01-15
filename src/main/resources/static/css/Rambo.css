@@ -10,12 +10,12 @@ body{
 
 .content {
     background-color: #ededed;
-    border-radius: 19px;
     margin :2%;
-    padding: 1%;
-    opacity: 0.8;
+    padding: 2%;
+    opacity: 0.9;
     padding-bottom: 10px;
     position: relative;
+    border: #9E0E40 solid 4px;
 }
 
 .resume{
@@ -24,8 +24,10 @@ body{
 }
 
 .resume img{
-    width: 20%;
-    height: 20%;
+    width: 100%;
+    height:auto;
+    align-self: center;
+    border: solid 2px #101010;
 }
 
 .resume .text{
@@ -49,4 +51,32 @@ body{
 .content h3{
     color : #323232;
     font-size: 130%;
+}
+
+#noteMoyenne{
+    margin-top: 5%;
+    font-size: 1.5em;
+    color: #720c2b;
+    width: 100%;
+    padding-left: 5%;
+    background-color: #a8aba2;
+    border-left: solid 5px #720c2b;
+}
+
+#noteAndImg{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+#noteUtilisateur{
+    font-size: 1.2em;
+    font-style: italic;
+    color: #9E0E40;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    border-left: solid 5px #720c2b;
+    background-color: #D3D3D3;
 }

@@ -9,15 +9,19 @@
 }
 
 .menu-footer a {
-    border-radius: 10px;
     width: 25%;
     text-align: center;
     padding: 1%;
-    margin: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     text-decoration : none;
     background-color: #323232;
-    height: 100%;
-
+    border-top: #9E0E40 solid 4px;
+    border-right: solid 2px #101010;
+    border-left: solid 2px #101010;
+    height: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-footer a div {
@@ -25,6 +29,7 @@
     font-size: 100%;
     font-weight: bold;
     display: inline;
+    align-self: center;
 }
 
 .menu-footer a:hover {

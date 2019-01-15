@@ -1,19 +1,31 @@
 .header-haut{
+    background-color: #323232;
     display: flex;
-    padding: 1%;
+    width:100%;
+    border-bottom: solid #9E0E40 5px;
+    align-items: stretch;
+}
+
+html, body{
+    height: 100%;
+    font-family: "Gill Sans", sans-serif;
 }
 
 #logo{
-    width: 100%;
+    width: 80%;
+    margin: 2%;
+    align-self: center;
 }
 
 .header-haut a{
     width: 20%;
+    justify-content: center;
+    display: flex;
 }
 
 .infos{
+    align-self: center;
     text-align: center;
-    margin-left: 3%;
     color: white;
 }
 
@@ -22,24 +34,8 @@
     width: 100%;
     margin-left: 2%;
     height: 50%;
-}
+    align-self: center;
 
-.menu-header div a {
-    border-radius: 10px;
-    width: 200%;
-    padding: 2%;
-    margin: 1%;
-    text-decoration : none;
-    background-color: #323232;
-}
-
-.menu-header a {
-    border-radius: 10px;
-    width: 200%;
-    padding: 2%;
-    margin: 1%;
-    text-decoration : none;
-    background-color: #323232;
 }
 
 .menu-header div a div {
@@ -66,12 +62,13 @@
 
 
 .menu-header .headerButtonA {
-    border-radius: 10px;
+    border: solid 3px #101010;
     width: 200%;
     padding: 2%;
-    margin: 1%;
     text-decoration : none;
-    background-color: #323232;
+    display: flex;
+    background-color: #720c2b;
+
 
 }
 
@@ -79,10 +76,11 @@
     color: white;
     font-size: 100%;
     font-weight: bold;
+    align-self: center;
 }
 
 .menu-header .headerButtonA:hover{
-    background-color: #720c2b;
+    background-color: #9E0E40;
 }
 
 .avatarHeader{
@@ -97,4 +95,9 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
+    margin-right: 2%;
+}
+
+#wrap{
+    width: 100%;
 }

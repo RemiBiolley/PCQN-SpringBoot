@@ -1,5 +1,5 @@
 
-<div th:fragment="header">
+<th:block th:fragment="header">
     <div class="header-haut">
         <a href="/accueil"><img src="/img/PQCNprojet.png" id="logo"/></a>
         <div class="infos">
@@ -39,9 +39,9 @@
     <div th:if="${isConnected == 'Profil'}">
         <a th:href="@{'/disconnect'}">Deconnexion</a>
     </div>
-</div>
+</th:block>
 
-<div th:fragment="headerProfil">
+<th:block th:fragment="headerProfil">
     <div class="header-haut">
         <a href="/accueil"><img src="/img/PQCNprojet.png" id="logo"/></a>
         <div class="infos">
@@ -88,9 +88,9 @@
     <th:block th:if="${myProfile}=='me'">
         <a th:href="@{'/disconnect'}">Deconnexion</a>
     </th:block>
-</div>
+</th:block>
 
-<div th:fragment="headerConnection">
+<th:block th:fragment="headerConnection">
     <div class="header-haut">
         <a href="/accueil"><img src="/img/PQCNprojet.png" id="logo"/></a>
         <div class="infos">
@@ -108,11 +108,11 @@
                     Autres
                 </div>
             </a>
-            <a class="headerButtonA" href="/connection">
+            <a class="headerButtonA" href="/connection" id="button3">
                 <div class="headerButtonDiv">
                     Connexion / Inscription
                 </div>
             </a>
         </div>
     </div>
-</div>
+</th:block>

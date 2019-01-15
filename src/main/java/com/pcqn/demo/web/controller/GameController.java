@@ -57,9 +57,11 @@ public class GameController {
 
     @GetMapping("/game/{id}")
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
+        User user = new User();
+
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
-                User user = (User) request.getSession().getAttribute("user");
+                user = (User) request.getSession().getAttribute("user");
                 model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
@@ -78,6 +80,8 @@ public class GameController {
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
         Game game = gameRepository.findGameById(id);
 
+        String userNote = noteRepository.findNoteByUserAndGame(user.getId(), game.getId());
+
         String name = game.getName();
 
         List<Comment> comments = commentRepository.findAllByGameId(id);
@@ -86,6 +90,7 @@ public class GameController {
         model.addAttribute("game", game);
         model.addAttribute("momentGame1", momentGames.get(0));
         model.addAttribute("momentGame2", momentGames.get(1));
+        model.addAttribute("userNote", userNote);
         return "game/" + name;
     }
 
