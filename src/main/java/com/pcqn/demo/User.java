@@ -7,16 +7,21 @@ import java.util.Collection;
 
 @Entity
 public class User implements Serializable{
-    @OneToOne(mappedBy = "user")
+    public User(){
+        this.points = 0;
+        this.rank = "Bleusaille";
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private UserInfo userInfo;
 
     @ManyToOne
     private UserType userType;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Note> notes;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Comment> comments;
 
     @Id
@@ -34,6 +39,12 @@ public class User implements Serializable{
 
     @Column(name="Avatar", nullable = true)
     private String avatar;
+
+    @Column(name="points", nullable = false)
+    private Integer points;
+
+    @Column(name="rang", nullable = false)
+    private String rank;
 
     public Integer getId() {
         return id;
@@ -106,7 +117,7 @@ public class User implements Serializable{
         defaultAvatars.add("https://mir-s3-cdn-cf.behance.net/project_modules/disp/3eb13e21340091.562ff8a21c1f8.jpg");
         defaultAvatars.add("https://mir-s3-cdn-cf.behance.net/project_modules/disp/3a11a921340091.562ff8a218e81.jpg");
 
-        int random = (int)(Math.random() * 3 + 0);
+        int random = (int)(Math.random() * 4 + 0);
 
         this.avatar = defaultAvatars.get(random);
     }
@@ -117,5 +128,40 @@ public class User implements Serializable{
 
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public void checkRank(){
+        Integer points = this.points;
+        if(points<=5){
+            this.setRank("Bleusaille");
+        }
+        else if(points<=20){
+            this.setRank("Apprenti aventurier");
+        }
+        else if(points<=40){
+            this.setRank("Plombier moustachu");
+        }
+        else if(points<=100){
+            this.setRank("MasterChief");
+        }
+        else{
+            this.setRank("Dieu de la guerre");
+        }
     }
 }

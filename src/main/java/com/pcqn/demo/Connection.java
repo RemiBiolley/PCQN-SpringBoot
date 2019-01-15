@@ -1,8 +1,9 @@
 package com.pcqn.demo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Connection {
+public class Connection implements Serializable {
 
     private String username;
     private String password;

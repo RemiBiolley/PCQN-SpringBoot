@@ -1,3 +1,8 @@
+.jaquette{
+    width: 50px;
+    height: auto;
+}
+
 body{
     background-image: url("https://wallpaperplay.com/walls/full/b/3/8/183091.jpg");
     background-size: 100%;
@@ -15,8 +20,6 @@ body{
     width: 50%;
     text-align: center;
     height: 100%;
-    color: #a40f37 ;
-    font-weight: bold;
 }
 
 .content h1{
@@ -29,23 +32,16 @@ body{
 }
 
 .content label{
+    color: #a40f37 ;
     font-weight: bold;
 }
 
-.avatar{
-    height: 150px;
-    width: auto;
-}
-
-.modifInfosForm{
-    display: none;
-}
-
-.personalInfosForm{
-    display:none;
-}
-
-.jaquette{
-    width:10%;
+img{
+    width: 25%;
     height: auto;
+}
+
+.pageAvatars{
+    height: 10%;
+    width:auto;
 }

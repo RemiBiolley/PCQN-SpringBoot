@@ -1,13 +1,18 @@
 package com.pcqn.demo.web.controller;
 
-import com.pcqn.demo.*;
+import com.pcqn.demo.Comment;
+import com.pcqn.demo.Game;
+import com.pcqn.demo.Note;
+import com.pcqn.demo.User;
+import com.pcqn.demo.CommentRepository;
+import com.pcqn.demo.GameRepository;
+import com.pcqn.demo.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,8 +30,11 @@ public class GameController {
     public String displayGameList(HttpServletRequest request, Model model){
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
+                model.addAttribute("user", user);
             }
             else{
                 model.addAttribute("isConnected", "Connexion / Inscription");
@@ -51,8 +59,11 @@ public class GameController {
     public String displayGamePage(@PathVariable Integer id, HttpServletRequest request, Model model){
         if(request.getSession(false)!=null){
             if(request.getSession(false).getAttribute("user")!=null){
+                User user = (User) request.getSession().getAttribute("user");
+                model.addAttribute("avatar", user.getAvatar());
                 model.addAttribute("isConnected", "Profil");
                 model.addAttribute("destination", "/profil");
+                model.addAttribute("user", user);
             }
             else{
                 model.addAttribute("isConnected", "Connexion / Inscription");

@@ -3,12 +3,16 @@ package com.pcqn.demo;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Game {
-    @OneToMany(mappedBy = "game")
+public class Game implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
     private Collection<Note> notes;
+
+    @OneToMany(mappedBy = "game")
+    private Collection<UserInfo> userInfos;
 
 
     @Id
@@ -95,5 +99,21 @@ public class Game {
 
     public void increaseNoteCounter(){
         this.setNbreNotes(this.nbreNotes+1);
+    }
+
+    public Collection<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Collection<Note> notes) {
+        this.notes = notes;
+    }
+
+    public Collection<UserInfo> getUserInfos() {
+        return userInfos;
+    }
+
+    public void setUserInfos(Collection<UserInfo> userInfos) {
+        this.userInfos = userInfos;
     }
 }

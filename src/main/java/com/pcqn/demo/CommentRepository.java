@@ -1,5 +1,6 @@
 package com.pcqn.demo;
 
+import com.pcqn.demo.Comment;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

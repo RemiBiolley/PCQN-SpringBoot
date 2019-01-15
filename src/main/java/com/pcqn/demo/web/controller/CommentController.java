@@ -18,6 +18,9 @@ public class CommentController {
     @Autowired
     GameRepository gameRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping("/comment")
     @ResponseBody
     public void addComment(@RequestParam String commentContent, @RequestParam Integer gameId, HttpServletRequest request){
@@ -26,7 +29,8 @@ public class CommentController {
         comment.setContent(commentContent);
 
         User commentUser = (User) request.getSession().getAttribute("user");
-        comment.setUser(commentUser);
+        User userDB = userRepository.findUserById(commentUser.getId());
+        comment.setUser(userDB);
 
         Game commentGame = gameRepository.findGameById(gameId);
         comment.setGame(commentGame);
@@ -34,6 +38,13 @@ public class CommentController {
         comment.setDate(LocalDateTime.now());
 
         commentRepository.save(comment);
+
+        userDB.setPoints(userDB.getPoints()+2);
+        userDB.checkRank();
+
+        userRepository.save(userDB);
+
+        request.getSession().setAttribute("user", userDB);
     }
 
     @PostMapping("/response")
@@ -43,7 +54,8 @@ public class CommentController {
         response.setContent(responseContent);
 
         User commentUser = (User) request.getSession().getAttribute("user");
-        response.setUser(commentUser);
+        User userDB = userRepository.findUserById(commentUser.getId());
+        response.setUser(userDB);
 
         Game commentGame = gameRepository.findGameById(gameId);
         response.setGame(commentGame);
@@ -53,5 +65,19 @@ public class CommentController {
         response.setParentComment(commentRepository.findCommentById(respondedCommentId));
 
         commentRepository.save(response);
+
+        userDB.setPoints(userDB.getPoints()+2);
+        userDB.checkRank();
+
+        userRepository.save(userDB);
+
+        request.getSession().setAttribute("user", userDB);
+    }
+
+    @PostMapping("/eraseComment")
+    @ResponseBody
+    public void eraseComment(@RequestParam Integer commentId){
+        Comment erasedComment = commentRepository.findCommentById(commentId);
+        commentRepository.delete(erasedComment);
     }
 }

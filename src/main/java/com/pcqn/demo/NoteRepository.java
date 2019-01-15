@@ -1,11 +1,8 @@
 package com.pcqn.demo;
 
-import org.springframework.data.jpa.repository.Modifying;
+import com.pcqn.demo.Note;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note,Integer> {
     @Query(value = "SELECT note FROM note n WHERE n.user_id= ?1 AND n.game_id= ?2", nativeQuery = true)
