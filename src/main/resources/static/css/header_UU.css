@@ -94,6 +94,11 @@ html, body{
     justify-content: space-around;
     align-items: center;
     margin-right: 2%;
+    background-color: #AC1E44;
+}
+
+#button3:hover{
+    background-color: #C72C48;
 }
 
 #wrap{
@@ -107,6 +112,7 @@ html, body{
     width: 10%;
     height: 4%;
     margin-left: 1%;
+    border-left: solid 4px #9E0E40;
 }
 
 #disconnect div {
@@ -118,4 +124,14 @@ html, body{
 
 #disconnect:hover{
     background-color: #404040;
+}
+
+noscript div{
+    background-color: #a8aba2;
+    margin:auto;
+    margin-top:2%;
+    width:50%;
+    color: #720c2b;
+    padding: 1%;
+    border: solid 4px #9E0E40;
 }

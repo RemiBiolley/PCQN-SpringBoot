@@ -1,19 +1,27 @@
 function addComment(){
     jQuery(document).ready(function(){
         var commentContent = $("input[id='myComment']").eq(0).val();
+        var user = $("input[name='user']").val();
         var gameId = $("input[type='hidden']").val();
         if(commentContent){
-            alert(commentContent);
-            $.ajax({
-                type: "POST",
-                url: "/comment",
-                data: {commentContent: commentContent, gameId: gameId},
-                success: function(){
-                    window.location.reload();
+            if(user!=""){
+                alert(commentContent);
+                $.ajax({
+                    type: "POST",
+                    url: "/comment",
+                    data: {commentContent: commentContent, gameId: gameId},
+                    success: function(){
+                        window.location.reload();
+                    }
+
+                });
+            }
+            else{
+                var conf = confirm("Il faut être connecté pour pouvoir commenter. Être redirigé vers la page de connexion ?");
+                if(conf) {
+                    window.location.href = "/connection";
                 }
-
-            });
-
+            }
         }
         else{
             alert("Pardon ?")
