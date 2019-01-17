@@ -1,6 +1,7 @@
 package com.pcqn.demo.web.controller;
 
 import com.pcqn.demo.*;
+import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,8 +96,6 @@ public class ConnectionController {
         final Pattern VALID_EMAIL_ADDRESS_REGEX =
                 Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         boolean isMailCorrect = VALID_EMAIL_ADDRESS_REGEX.matcher(email).matches();
-
-        System.out.println("ici");
 
         String result;
 

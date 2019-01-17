@@ -36,9 +36,9 @@
         </div>
     </div>
 
-    <div th:if="${isConnected == 'Profil'}">
-        <a th:href="@{'/disconnect'}">Deconnexion</a>
-    </div>
+    <a th:if="${isConnected == 'Profil'}" id="disconnect" th:href="@{'/disconnect'}">
+        <div>Deconnexion</div>
+    </a>
 </th:block>
 
 <th:block th:fragment="headerProfil">
@@ -85,9 +85,9 @@
         </div>
     </div>
 
-    <th:block th:if="${myProfile}=='me'">
-        <a th:href="@{'/disconnect'}">Deconnexion</a>
-    </th:block>
+    <a th:if="${myProfile}=='me'" id="disconnect" th:href="@{'/disconnect'}">
+        <div>Deconnexion</div>
+    </a>
 </th:block>
 
 <th:block th:fragment="headerConnection">
