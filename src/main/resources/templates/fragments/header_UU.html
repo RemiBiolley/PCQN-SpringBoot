@@ -36,9 +36,15 @@
         </div>
     </div>
 
-    <div th:if="${isConnected == 'Profil'}">
-        <a th:href="@{'/disconnect'}">Deconnexion</a>
-    </div>
+    <a th:if="${isConnected == 'Profil'}" id="disconnect" th:href="@{'/disconnect'}">
+        <div>Deconnexion</div>
+    </a>
+
+    <noscript>
+        <div>
+            JavaScript n'a pas été autorisé pour ce site. Pour pouvoir en profiter pleinement, veuillez l'activer dans les paramètres de votre navigateur.
+        </div>
+    </noscript>
 </th:block>
 
 <th:block th:fragment="headerProfil">
@@ -85,9 +91,15 @@
         </div>
     </div>
 
-    <th:block th:if="${myProfile}=='me'">
-        <a th:href="@{'/disconnect'}">Deconnexion</a>
-    </th:block>
+    <a th:if="${myProfile}=='me'" id="disconnect" th:href="@{'/disconnect'}">
+        <div>Deconnexion</div>
+    </a>
+
+    <noscript>
+        <div>
+            JavaScript n'a pas été autorisé pour ce site. Pour pouvoir en profiter pleinement, veuillez l'activer dans les paramètres de votre navigateur.
+        </div>
+    </noscript>
 </th:block>
 
 <th:block th:fragment="headerConnection">
@@ -115,4 +127,10 @@
             </a>
         </div>
     </div>
+
+    <noscript>
+        <div>
+            JavaScript n'a pas été autorisé pour ce site. Pour pouvoir en profiter pleinement, veuillez l'activer dans les paramètres de votre navigateur.
+        </div>
+    </noscript>
 </th:block>

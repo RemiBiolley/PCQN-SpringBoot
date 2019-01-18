@@ -68,8 +68,6 @@ html, body{
     text-decoration : none;
     display: flex;
     background-color: #720c2b;
-
-
 }
 
 .menu-header .headerButtonDiv {
@@ -96,8 +94,44 @@ html, body{
     justify-content: space-around;
     align-items: center;
     margin-right: 2%;
+    background-color: #AC1E44;
+}
+
+#button3:hover{
+    background-color: #C72C48;
 }
 
 #wrap{
     width: 100%;
+}
+
+#disconnect{
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    height: 4%;
+    margin-left: 1%;
+    border-left: solid 4px #9E0E40;
+}
+
+#disconnect div {
+    align-self: center;
+    text-decoration: none;
+    color: white;
+    border-left: 4px #9E0E40;
+}
+
+#disconnect:hover{
+    background-color: #404040;
+}
+
+noscript div{
+    background-color: #a8aba2;
+    margin:auto;
+    margin-top:2%;
+    width:50%;
+    color: #720c2b;
+    padding: 1%;
+    border: solid 4px #9E0E40;
 }

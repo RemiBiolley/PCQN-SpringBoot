@@ -14,7 +14,6 @@ public class Game implements Serializable {
     @OneToMany(mappedBy = "game")
     private Collection<UserInfo> userInfos;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

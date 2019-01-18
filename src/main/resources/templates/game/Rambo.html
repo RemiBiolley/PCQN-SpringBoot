@@ -40,6 +40,7 @@
 
             <form class="rating">
                 <input type="hidden" th:value="${game.id}" name="gameId">
+                <input type="hidden" th:value="${user}" name="user">
                 <input type="radio" id="star5" name="rating" value="5"  onclick="applyNote();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                 <input type="radio" id="star4half" name="rating" value="4.5" onclick="applyNote();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                 <input type="radio" id="star4" name="rating" value="4" onclick="applyNote();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
