@@ -23,16 +23,24 @@
     <div class="content">
         <h1>Pokémon Perle</h1>
         <div class="resume">
-            <img src="/img/004_gameplay_pokemon_platine.jpg"/>
+            <div id="noteAndImg">
+                <img id="image" src="/img/004_gameplay_pokemon_platine.jpg"/>
+                <div id="noteMoyenne" th:text="'Note du jeu : ' + ${game.note}"></div>
+                <th:block th:if="${userNote}!=null">
+                    <div id="noteUtilisateur" th:text="'Ta note : ' + ${userNote}"></div>
+                </th:block>
+                <th:block th:unless="${userNote}!=null">
+                    <div id="noteUtilisateur">Tu n'as pas noté ce jeu</div>
+                </th:block>
+            </div>
             <div class="text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales sollicitudin velit, a malesuada justo fermentum et. Mauris eu odio lacus. Etiam rutrum venenatis mauris eu feugiat. Donec tristique rhoncus libero, et congue nisi malesuada non. Vivamus maximus rutrum tempor. Nunc eleifend leo eu vehicula efficitur. Fusce ac mattis augue. Cras sit amet vehicula mauris, a ultrices nulla. In hac habitasse platea dictumst. Nunc quis justo a magna dapibus hendrerit. Pellentesque placerat neque urna, sed suscipit nulla pulvinar vel. In nec leo venenatis, varius mi et, accumsan mi. Suspendisse nec tincidunt turpis. Phasellus vitae enim nibh. Integer quis dui malesuada, vestibulum ante in, elementum massa. In sit amet ex eget est ornare varius vitae eu libero.
                 Morbi cursus nisi non risus tempor, a vestibulum sem imperdiet. Ut non nunc sapien. Aenean dictum ligula non venenatis euismod. Sed quis metus id nibh rhoncus egestas. Aenean quis rutrum mauris, et semper ex. Vestibulum tempor quis neque ut fringilla. Curabitur nec velit nulla. Nullam sollicitudin quam enim, eget pretium ipsum imperdiet feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             </div>
         </div>
 
-        <div th:text="@{'Note du jeu : ' + ${game.note}}"></div>
-
         <h3>Donne ta note à ce jeu ou modifie celle que tu as donnée ! Seuls les idiots ne changent pas d'avis ;)</h3>
+
         <form class="rating">
             <input type="hidden" th:value="${game.id}" name="gameId">
             <input type="radio" id="star5" name="rating" value="5"  onclick="applyNote();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -46,7 +54,7 @@
             <input type="radio" id="star1" name="rating" value="1" onclick="applyNote();"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
             <input type="radio" id="starhalf" name="rating" value="0.5" onclick="applyNote();"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
         </form>
-
+<br>
         <div class="soluce">
             <div class="partie" >
                 <h2 id="partie1">Partie 1 : De Bonaugure au premier badge</h2>
@@ -122,29 +130,40 @@
 
             <div class="partie">
                 <h2 id="partie2">Partie 2 : Du second badge au troisième badge</h2>
-                <div class="tips">
+                <div class="tips" id="tip2">
                     <h3>Tips 1</h3>
+                </div>
+                <div class="tips" id="tip2p">
                     <p>Et Ben on est nul ?</p>
                 </div>
             </div>
+
             <div class="partie">
-                <h2>Partie 3 : Du quatrième badge au sixième badge</h2>
-                <div class="tips">
+                <h2 id="partie3">Partie 3 : Du quatrième badge au sixième badge</h2>
+                <div class="tips" id="tip3">
                     <h3>Tips 1</h3>
+                </div>
+                <div class="tips" id="tip3p">
                     <p>Et Ben on est nul ?</p>
                 </div>
             </div>
+
             <div class="partie">
-                <h2>Partie 4 : Du septième badge à la Ligue Pokémon</h2>
-                <div class="tips">
+                <h2 id="partie4">Partie 4 : Du septième badge à la Ligue Pokémon</h2>
+                <div class="tips" id="tip4">
                     <h3>Tips 1</h3>
+                </div>
+                <div class="tips" id="tip4p">
                     <p>Et Ben on est nul ?</p>
                 </div>
             </div>
+
             <div class="partie">
-                <h2>Partie 5 : Le Conseil des Quatre</h2>
-                <div class="tips">
+                <h2 id="partie5">Partie 5 : Le Conseil des Quatre</h2>
+                <div class="tips" id="tip5">
                     <h3>Tips 1</h3>
+                </div>
+                <div class="tips" id="tip5p">
                     <p>Et Ben on est nul ?</p>
                 </div>
             </div>

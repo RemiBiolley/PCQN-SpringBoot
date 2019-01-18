@@ -1,5 +1,5 @@
 body{
-    background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2013/06/13/102448/35fe375315aa4138e3fa66ac75d5270b-700.jpg") ;
+    background-image: url("https://stmed.net/sites/default/files/video-game-hd-wallpapers-33874-8068771.jpg") ;
     background-attachment: fixed;
     height: 100%;
 }
@@ -23,8 +23,8 @@ body{
     justify-content: space-between;
 }
 
-.resume img{
-    width: 100%;
+.resume #image{
+    width: 50%;
     height:auto;
     align-self: center;
     border: solid 2px #101010;
@@ -79,4 +79,8 @@ body{
     padding-left: 5%;
     border-left: solid 5px #720c2b;
     background-color: #D3D3D3;
+}
+
+.tips{
+    display: none;
 }
