@@ -3,10 +3,6 @@ body{
     background-attachment: fixed;
     height: 100%;
 }
-#wrap{
-    min-height: 100%;
-    position: relative;
-}
 
 .content {
     background-color: #ededed;
@@ -24,8 +20,8 @@ body{
 }
 
 .resume #image{
-    width: 50%;
-    height:auto;
+    width: 100%;
+    height: auto;
     align-self: center;
     border: solid 2px #101010;
 }
@@ -35,6 +31,7 @@ body{
     margin-left: 5%;
     margin-right: 3%;
     font-size: 100%;
+    width: 75%;
 }
 
 .content h1{
@@ -67,6 +64,7 @@ body{
     display: flex;
     align-self: center;
     flex-direction: column;
+    width: 25%;
 }
 
 #noteUtilisateur{

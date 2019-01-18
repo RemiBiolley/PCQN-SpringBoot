@@ -21,7 +21,7 @@
             <h1>Rambo</h1>
             <div class="resume">
                 <div id="noteAndImg">
-                    <img src="/img/rambo-sylvester-stallone-1080p-hd-wallpaper-movies.jpg"/>
+                    <img id="image" src="/img/rambo-sylvester-stallone-1080p-hd-wallpaper-movies.jpg"/>
                     <div id="noteMoyenne" th:text="'Note du jeu : ' + ${game.note}"></div>
                     <th:block th:if="${userNote}!=null">
                         <div id="noteUtilisateur" th:text="'Ta note : ' + ${userNote}"></div>

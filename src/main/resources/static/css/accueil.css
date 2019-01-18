@@ -4,11 +4,6 @@ body{
     background-attachment: fixed;
 }
 
-#wrap{
-    min-height: 100%;
-    position: relative;
-}
-
 .content{
     border-radius: 19px;
     margin-left:2%;
