@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,6 +27,10 @@ public class AdminController {
     @GetMapping("/adminPage")
     public String displayAdminPage(HttpServletRequest request, Model model) {
         List<Game> momentGames = gameRepository.findGameByMomentGame(1);
+        ArrayList<String> momentGamesNames = new ArrayList<String>();
+        momentGamesNames.add(momentGames.get(0).getName());
+        momentGamesNames.add(momentGames.get(1).getName());
+
         model.addAttribute("momentGame1", momentGames.get(0));
         model.addAttribute("momentGame2", momentGames.get(1));
 
@@ -37,6 +42,10 @@ public class AdminController {
                     List<Game> games = gameRepository.findAll();
                     List<String> availableGames = gameRepository.findGamesNames();
 
+                    System.out.println(momentGamesNames.get(0));
+                    System.out.println(momentGamesNames.get(1));
+
+                    model.addAttribute("momentGamesNames", momentGamesNames);
                     model.addAttribute("avatar", user.getAvatar());
                     model.addAttribute("user", user);
                     model.addAttribute("isConnected", "Profil");

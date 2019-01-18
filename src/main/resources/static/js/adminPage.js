@@ -2,19 +2,25 @@ $("input[name='buttonMomentGame']").on("click", function(){
 
     var removedGameName = $(this).prev().prev().prev().text();
     var newGameName = $(this).prev().val();
-    var availableGames = $("input[type='hidden']").val();
-    if(removedGameName && newGameName){
-        alert(newGameName);
-        if(availableGames.includes(newGameName)){
-            $.ajax({
-                type: "POST",
-                url: "/changeMomentGame",
-                data: {removedGameName: removedGameName, newGameName: newGameName},
-                success: function(){
-                    window.location.reload();
-                }
+    var availableGames = $("input[class='availableGamesHidden']").val();
+    var momentGames = $("input[class='momentGamesHidden']").val();
 
-            });
+    if(removedGameName && newGameName){
+        if(availableGames.includes(newGameName)){
+            if(!momentGames.includes(newGameName)){
+                $.ajax({
+                    type: "POST",
+                    url: "/changeMomentGame",
+                    data: {removedGameName: removedGameName, newGameName: newGameName},
+                    success: function(){
+                        window.location.reload();
+                    }
+
+                });
+            }
+            else{
+                alert("Ce jeu est déjà défini comme jeu du moment.")
+            }
         }
         else{
             alert("Le jeu rentré est invalide");
