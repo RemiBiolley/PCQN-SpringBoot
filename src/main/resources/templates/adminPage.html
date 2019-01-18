@@ -42,13 +42,13 @@
                 <div th:text="${momentGame1.name}"></div>
                 <img th:src="@{${momentGame1.box}}" class="jaquette">
                 <input id="changeMomentGame1" type="text" class="changeMomentGame">
-                <input type="button" value="Changer ce jeu" name="buttonMomentGame">
+                <input type="button" value="Changer ce jeu" name="buttonMomentGame" class="subMomentGame">
             </div>
             <div class="momentGameDiv">
                 <div th:text="${momentGame2.name}"></div>
                 <img th:src="@{${momentGame2.box}}" class="jaquette">
                 <input id="changeMomentGame2" type="text" class="changeMomentGame">
-                <input type="button" value="Changer ce jeu" name="buttonMomentGame">
+                <input type="button" value="Changer ce jeu" name="buttonMomentGame" class="subMomentGame">
             </div>
             <input type="hidden" th:value="${availableGames}" class="availableGamesHidden">
             <input type="hidden" th:value="${momentGamesNames}" class="momentGamesHidden">
@@ -65,8 +65,6 @@
                     <th>Points</th>
                     <th>Type</th>
                     <th>Mail</th>
-                    <th></th>
-                    <th></th>
                 </tr>
                 <tr th:each="user1 : ${users}">
                     <td>
@@ -76,7 +74,7 @@
                     </td>
                     <td th:text="${user1.userName}" class="userName"></td>
                     <td th:text="${user1.rank}"></td>
-                    <td th:text="${user1.points} + 'pts'"></td>
+                    <td th:text="${user1.points} + ' pts'"></td>
                     <td th:text="${user1.userType.typeName}"></td>
                     <td th:text="${user1.email}"></td>
                     <th:block th:if="${user1.userType.id}==1">
@@ -88,6 +86,9 @@
                         </td>
                     </th:block>
                     <th:block th:if="${user.userType.id}==3 and ${user1.userType.id}==2">
+                        <td>
+                            <input type="button" value="Rétrograder utilisateur" name="retrogradeUser">
+                        </td>
                         <td>
                             <input type="button" value="Enlever utilisateur" name="removeUser">
                         </td>

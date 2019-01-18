@@ -1,6 +1,5 @@
 $( "#partie1" ).click(function() {
     $( "#tip1" ).toggle( "slow" );
-    alert($("#tip11"));
     $( "#tip11" ).toggle( "slow" );
     $( "#tip12" ).toggle( "slow" );
     $( "#tip13" ).toggle( "slow" );

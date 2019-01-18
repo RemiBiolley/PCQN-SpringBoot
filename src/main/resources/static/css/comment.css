@@ -65,6 +65,10 @@
     border-right: solid 1px #101010;
 }
 
+.commentWriter:hover{
+    background-color: #606060;
+}
+
 .responseWriter{
     display: flex;
     justify-content: space-between;
@@ -130,4 +134,13 @@ a{
     background-color: #9E0E40;
     color: white;
     border-color: #a40f37;
+}
+
+.writerName{
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.writerRank, .writerPoints{
+    font-style: italic;
 }

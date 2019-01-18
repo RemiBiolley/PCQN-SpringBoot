@@ -42,9 +42,6 @@ public class AdminController {
                     List<Game> games = gameRepository.findAll();
                     List<String> availableGames = gameRepository.findGamesNames();
 
-                    System.out.println(momentGamesNames.get(0));
-                    System.out.println(momentGamesNames.get(1));
-
                     model.addAttribute("momentGamesNames", momentGamesNames);
                     model.addAttribute("avatar", user.getAvatar());
                     model.addAttribute("user", user);
@@ -89,6 +86,16 @@ public class AdminController {
 
         promotedUser.setUserType(adminType);
         userRepository.save(promotedUser);
+    }
+
+    @PostMapping("/retrograde")
+    @ResponseBody
+    public void retrograde(@RequestParam String retrogradedUserName){
+        User retrogradedUser = userRepository.findUserByUserName(retrogradedUserName);
+        UserType adminType = userTypeRepository.findUserTypeById(1);
+
+        retrogradedUser.setUserType(adminType);
+        userRepository.save(retrogradedUser);
     }
 
     @PostMapping("/removeUser")

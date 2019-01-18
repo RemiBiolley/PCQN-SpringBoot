@@ -50,6 +50,28 @@ $("input[name='promoteUser']").on("click", function(){
     }
 });
 
+
+
+$("input[name='retrogradeUser']").on("click", function(){
+    var retrogradedUserName = $(this).parent().siblings(".userName").eq(0).text();
+    alert(retrogradedUserName)
+    if(retrogradedUserName){
+        $.ajax({
+            type: "POST",
+            url: "/retrograde",
+            data: {retrogradedUserName: retrogradedUserName},
+            success: function(){
+                window.location.reload();
+            }
+        });
+    }
+    else{
+        alert("Il y a eu un problème");
+    }
+});
+
+
+
 $("input[name='removeUser']").on("click", function(){
     var removedUserName = $(this).parent().siblings(".userName").eq(0).text();
     alert(removedUserName);
