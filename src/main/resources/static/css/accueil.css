@@ -46,9 +46,3 @@ body{
 .jeu2 img, .jeu1 img{
     width: 100%;
 }
-
-#wrap{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}

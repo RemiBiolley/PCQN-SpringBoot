@@ -15,42 +15,31 @@
 <body>
 
 <div id="wrap">
-    <div class="header-haut">
-        <a href="/accueil"><img src="/img/PQCNprojet.png"/></a>
-        <div class="infos">
-            <h2>Venez vous amusez avec nous !</h2>
-        </div>
-        <div class="menu-header">
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame1.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame1.name}"></div>
-            </a>
-            <a class="headerButtonA" th:href="@{'/game/' + ${momentGame2.id}}">
-                <div class="headerButtonDiv" th:text="${momentGame2.name}"></div>
-            </a>
-            <a class="headerButtonA" href="/game">
-                <div class="headerButtonDiv">
-                    Autres
-                </div>
-            </a>
-            <a class="headerButtonA" th:href="${destination}">
-                <div class="headerButtonDiv" th:text="${isConnected}">
-                </div>
-            </a>
-        </div>
-    </div>
+    <div th:replace="fragments/header_UU :: header"></div>
 
     <div class="content">
         <h1>Final Fantasy 7</h1>
         <div class="resume">
-            <img src="/img/finalfantasy7.jpg"/>
+            <div id="noteAndImg">
+                <img id="image" src="/img/finalfantasy7.jpg"/>
+                <div id="noteMoyenne" th:text="'Note du jeu : ' + ${game.note}"></div>
+                <th:block th:if="${userNote}!=null">
+                    <div id="noteUtilisateur" th:text="'Ta note : ' + ${userNote}"></div>
+                </th:block>
+                <th:block th:unless="${userNote}!=null">
+                    <div id="noteUtilisateur">Tu n'as pas noté ce jeu</div>
+                </th:block>
+            </div>
             <div class="text">
                 La Shinra, une organisation industrielle et politique détenant le pouvoir sur toute la planète, tire sans se soucier de l'équilibre naturel les ressources souterraines de MAKO, la très puissante énergie se trouvant dans le sol et nécessaire à la survie de la planète. AVALANCHE, un groupe de réactionnaires, décide d'empêcher la Shinra de vider ces réserves énergétiques en faisant exploser les extracteurs de MAKO. Ils font appels à Cloud, ex-recrue du SOLDAT, une faction de l'armée de la Shinra. Au cours d'une expédition au quartier général de la Shinra, le groupe AVALANCHE découvre le corps sans vie du président de l'entreprise. Cette situation est liées à divers événements qui se sont passés plusieurs années auparavant dans divers lieux de la planète.
                 Votre périple vous mène en différents endroits, non seulement à la recherche des événements passés, mais également sur les traces du mystérieux individu ayant assassiné le président de la Shinra...
             </div>
         </div>
 
+        <h3>Donne ta note à ce jeu ou modifie celle que tu as donnée ! Seuls les idiots ne changent pas d'avis ;)</h3>
+
         <form class="rating">
-            <input type="hidden" th:value="${gameId}">
+            <input type="hidden" th:value="${game.id}" name="gameId">
             <input type="radio" id="star5" name="rating" value="5"  onclick="applyNote();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
             <input type="radio" id="star4half" name="rating" value="4.5" onclick="applyNote();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
             <input type="radio" id="star4" name="rating" value="4" onclick="applyNote();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
@@ -62,7 +51,7 @@
             <input type="radio" id="star1" name="rating" value="1" onclick="applyNote();"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
             <input type="radio" id="starhalf" name="rating" value="0.5" onclick="applyNote();"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
         </form>
-    <br>
+        <br>
         <div class="soluce">
             <div class="partie" >
                 <h2 id="partie1">Vallée de Corral</h2>
