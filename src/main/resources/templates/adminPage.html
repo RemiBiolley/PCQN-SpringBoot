@@ -8,7 +8,6 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -28,7 +27,7 @@
         });
     </script>
 
-    <title>Les jeux</title>
+    <title>Gestion</title>
 </head>
 <body>
 
@@ -38,57 +37,63 @@
 
     <div class="content">
         <div id="changeMomentGames">
-            <span>Changer les jeux du moment :</span>
-            <div th:text="${momentGame1.name}"></div>
-            <img th:src="@{${momentGame1.box}}" class="jaquette">
-            <input id="changeMomentGame1" type="text" class="changeMomentGame">
-            <input type="button" value="Changer ce jeu" name="buttonMomentGame">
-            <br>
-            <div th:text="${momentGame2.name}"></div>
-            <img th:src="@{${momentGame2.box}}" class="jaquette">
-            <input id="changeMomentGame2" type="text" class="changeMomentGame">
-            <input type="button" value="Changer ce jeu" name="buttonMomentGame">
+            <div class="partTitle">Changer les jeux du moment :</div>
+            <div class="momentGameDiv">
+                <div th:text="${momentGame1.name}"></div>
+                <img th:src="@{${momentGame1.box}}" class="jaquette">
+                <input id="changeMomentGame1" type="text" class="changeMomentGame">
+                <input type="button" value="Changer ce jeu" name="buttonMomentGame">
+            </div>
+            <div class="momentGameDiv">
+                <div th:text="${momentGame2.name}"></div>
+                <img th:src="@{${momentGame2.box}}" class="jaquette">
+                <input id="changeMomentGame2" type="text" class="changeMomentGame">
+                <input type="button" value="Changer ce jeu" name="buttonMomentGame">
+            </div>
             <input type="hidden" th:value="${availableGames}">
         </div>
 
 
-
-        <table>
-            <tr>
-                <th>Avatar</th>
-                <th>Nom</th>
-                <th>Rang</th>
-                <th>Points</th>
-                <th>Type</th>
-                <th>Mail</th>
-                <th></th>
-            </tr>
-            <tr th:each="user1 : ${users}">
-                <td>
-                    <a th:href="@{'/profil/' + ${user1.id}}">
-                        <img th:src="${user1.avatar}" class="pageAvatars">
-                    </a>
-                </td>
-                <td th:text="${user1.userName}" class="userName"></td>
-                <td th:text="${user1.rank}"></td>
-                <td th:text="${user1.points} + 'pts'"></td>
-                <td th:text="${user1.userType.typeName}"></td>
-                <td th:text="${user1.email}"></td>
-                <th:block th:if="${user1.userType.id}==1">
+        <div id="manageUsers">
+            <div class="partTitle">Gérer les utilisateurs</div>
+            <table>
+                <tr>
+                    <th>Avatar</th>
+                    <th>Nom</th>
+                    <th>Rang</th>
+                    <th>Points</th>
+                    <th>Type</th>
+                    <th>Mail</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="user1 : ${users}">
                     <td>
-                        <input type="button" value="Faire admin" name="promoteUser">
+                        <a th:href="@{'/profil/' + ${user1.id}}">
+                            <img th:src="${user1.avatar}" class="pageAvatars">
+                        </a>
                     </td>
-                    <td>
-                        <input type="button" value="Enlever utilisateur" name="removeUser">
-                    </td>
-                </th:block>
-                <th:block th:if="${user.userType.id}==3 and ${user1.userType.id}==2">
-                    <td>
-                        <input type="button" value="Enlever utilisateur" name="removeUser">
-                    </td>
-                </th:block>
-            </tr>
-        </table>
+                    <td th:text="${user1.userName}" class="userName"></td>
+                    <td th:text="${user1.rank}"></td>
+                    <td th:text="${user1.points} + 'pts'"></td>
+                    <td th:text="${user1.userType.typeName}"></td>
+                    <td th:text="${user1.email}"></td>
+                    <th:block th:if="${user1.userType.id}==1">
+                        <td>
+                            <input type="button" value="Faire admin" name="promoteUser">
+                        </td>
+                        <td>
+                            <input type="button" value="Enlever utilisateur" name="removeUser">
+                        </td>
+                    </th:block>
+                    <th:block th:if="${user.userType.id}==3 and ${user1.userType.id}==2">
+                        <td>
+                            <input type="button" value="Enlever utilisateur" name="removeUser">
+                        </td>
+                    </th:block>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
