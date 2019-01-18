@@ -5,13 +5,15 @@ body{
 }
 
 .content{
-    border-radius: 19px;
-    margin-left:2%;
+    background-color: #ededed ;
+    margin-top :2%;
+
     padding: 1%;
     opacity: 0.9;
+    width: 50%;
     height: 100%;
-    padding-bottom: 10px;
-    position: relative;
+
+    border: solid 4px #9E0E40;
 }
 
 .content h1{
@@ -27,7 +29,7 @@ body{
 }
 
 .nous{
-    color: white;
+    color: black;
 }
 
 .jeux{

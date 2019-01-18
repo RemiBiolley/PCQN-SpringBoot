@@ -12,13 +12,12 @@ body{
 
 .content{
     background-color: #ededed;
-    border-radius: 19px;
     margin :2%;
     padding: 1%;
-    opacity: 0.95;
+    opacity: 0.9;
     display: flex;
-    justify-content:space-around;
-
+    justify-content:space-evenly;
+    border: solid 4px #9E0E40;
 }
 
 .content h1{
@@ -39,16 +38,43 @@ input {
 
 .label{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 1%;
+    margin-top: 7%;
     width: 105%;
 }
 
-#submit{
+.submit{
     margin-top: 5%;
 }
 
 .infos{
     color: white;
+}
+
+.subform{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin-bottom: 2%;
+}
+
+.signinform{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+#sep{
+    background-color: #9E0E40;
+    width: 1%;
+}
+
+#sep:hover{
+    background-color: #C72C48;
+}
+
+.fail{
+    font-style: italic;
+    color: #a40f37;
 }

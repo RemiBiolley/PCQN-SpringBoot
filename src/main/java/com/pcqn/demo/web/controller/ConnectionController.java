@@ -53,20 +53,18 @@ public class ConnectionController {
     }
 
     @PostMapping("/connection")
-    public String connectionSubmit(@ModelAttribute Connection connection, Model model, HttpServletRequest request) {
-        List<Game> momentGames = gameRepository.findGameByMomentGame(1);
-        model.addAttribute("momentGame1", momentGames.get(0));
-        model.addAttribute("momentGame2", momentGames.get(1));
+    @ResponseBody
+    public String connectionSubmit(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
 
-        if(userRepository.existsUserByEmailAndPassword(connection.getEmail(), connection.getPassword())){
-            User user = userRepository.findUserByEmailAndPassword(connection.getEmail(), connection.getPassword());
+        if(userRepository.existsUserByEmailAndPassword(email, password)){
+            User user = userRepository.findUserByEmailAndPassword(email, password);
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("avatar",user.getAvatar());
 
-            return "redirect:/profil";
+            return "success";
         }
         else{
-            return "connection";
+            return "fail";
         }
     }
 
@@ -91,7 +89,7 @@ public class ConnectionController {
 
     @PostMapping("/inscription")
     @ResponseBody
-    public String addNewUser(@ModelAttribute Connection connection, @RequestParam String password, @RequestParam String passwordV, @RequestParam String email, @RequestParam String userName, HttpServletRequest request){
+    public String addNewUser(@RequestParam String password, @RequestParam String passwordV, @RequestParam String email, @RequestParam String userName, HttpServletRequest request){
 
         final Pattern VALID_EMAIL_ADDRESS_REGEX =
                 Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);

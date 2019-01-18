@@ -31,9 +31,12 @@
                 <label for="passwordConnect">Mot de passe : </label>
                 <input type="password" th:field="*{password}" class="password" id="passwordConnect">
             </div>
+            <div id="connectFailed" class="fail"></div>
             <br>
-            <input type="submit" value="Se connecter" class="submit">
+            <input type="button" value="Se connecter" class="submit" onclick="submitCon();">
         </form>
+
+        <div id="sep"></div>
 
         <form class="subform" action="#" th:action="@{/inscription}" th:object="${connection}" method="post">
             <h1>S'inscrire</h1>
@@ -57,7 +60,7 @@
                 <div id="userNameFailed" class="fail"></div>
             </div>
             <br>
-            <input type="button" value="S'inscrire" id="submit" onclick="submitSub();">
+            <input type="button" value="S'inscrire" class="submit" onclick="submitSub();">
         </form>
 
     </div>

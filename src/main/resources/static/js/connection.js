@@ -37,3 +37,32 @@ function submitSub() {
         }
     })
 }
+
+function submitCon() {
+    jQuery(document).ready(function(){
+        var email = $("input[id='emailConnect']").val();
+        var password = $("input[id='passwordConnect']").val();
+
+        if(email && password){
+            $.ajax({
+                type: "POST",
+                url: "/connection",
+                data: {email: email, password: password},
+                success: function(result){
+                    if(result==="fail"){
+                        $('.fail').html("");
+                        $('#connectFailed').html("Les informations saisies sont incorrectes");
+                    }
+                    else{
+                        window.location.href="/profil";
+                    }
+                }
+
+            });
+
+        }
+        else{
+            alert("Tous les champs doivent être remplis");
+        }
+    })
+}
