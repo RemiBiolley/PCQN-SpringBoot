@@ -3,10 +3,6 @@ body{
     background-attachment: fixed;
     height: 100%;
 }
-#wrap{
-    min-height: 100%;
-    position: relative;
-}
 
 .content {
     background-color: #ededed;

@@ -5,18 +5,14 @@ body{
 }
 
 .content{
-    background-color: #ededed ;
-    border-radius: 19px;
-    margin-top :2%;
-    margin-left: 25%;
-    margin-right: 25%;
-    padding: 1%;
+    background-color: #ededed;
+    margin :2%;
+    padding: 2%;
     opacity: 0.9;
-    width: 50%;
-    text-align: center;
-    height: 100%;
-    color: #a40f37 ;
-    font-weight: bold;
+    padding-bottom: 10px;
+    position: relative;
+    border: #9E0E40 solid 4px;
+    width: 40%;
 }
 
 .content h1{
@@ -46,6 +42,24 @@ body{
 }
 
 .jaquette{
-    width:10%;
+    width:20%;
     height: auto;
+}
+
+.infoss{
+    color: black;
+    display: flex;
+}
+
+.infosinfos{
+    margin-left: 2%;
+}
+
+.infosinfos .name{
+    color: #9E0E40;
+}
+
+.infosimages{
+    width: 50%;
+    align-self: center;
 }

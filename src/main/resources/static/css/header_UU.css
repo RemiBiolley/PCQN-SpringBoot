@@ -101,11 +101,6 @@ html, body{
     background-color: #C72C48;
 }
 
-#wrap{
-    width: 100%;
-    position: relative;
-}
-
 #disconnect{
     background-color: #323232;
     display: flex;
@@ -135,4 +130,10 @@ noscript div{
     color: #720c2b;
     padding: 1%;
     border: solid 4px #9E0E40;
+}
+
+#wrap{
+    min-height: 100%;
+    position: relative;
+    width: 100%;
 }

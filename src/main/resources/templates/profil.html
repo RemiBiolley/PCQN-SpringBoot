@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" th:href="@{/js/Resume.js}" href="/js/Resume.js" />
-    <link rel="stylesheet" th:href="@{/css/profil.css}" href="/css/profil.css" />
+
     <link rel="stylesheet" th:href="@{/css/header_UU.css}" href="/css/header_UU.css" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" href="/css/footer.css" />
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -41,17 +42,21 @@
             <h1 th:text="'Profil de ' + ${userProfil.userName}"></h1>
         </th:block>
         <div class="you">
-            <div class="infos">
+            <div class="infoss">
+                <div class="infosimages">
+                    <img class="avatar" th:src="@{${userProfil.avatar}}">
+                    <th:block th:if="${userInfo.game} != null">
+                        <img class="jaquette" th:src="@{${userInfo.game.box}}">
+                    </th:block>
+                </div>
+                <div class="infosinfos">
+                    <h2 class="name" th:text="${userProfil.userName}" ></h2>
+                    <h3 class="rank" th:text="${userProfil.rank}"></h3>
+                    <h3 class="points" th:text="${userProfil.points} + 'pts'"></h3>
+                    <h2 class="email" th:text="${userProfil.email}"></h2>
+                </div>
 
-                <h2 class="name" th:text="${userProfil.userName}" ></h2>
-                <h3 class="rank" th:text="${userProfil.rank}"></h3>
-                <h3 class="points" th:text="${userProfil.points} + 'pts'"></h3>
-                <h2 class="email" th:text="${userProfil.email}"></h2>
 
-                <img class="avatar" th:src="@{${userProfil.avatar}}">
-                <th:block th:if="${userInfo.game} != null">
-                    <img class="jaquette" th:src="@{${userInfo.game.box}}">
-                </th:block>
 
             </div>
 
@@ -121,5 +126,6 @@
 </div>
 
 <script src="/js/profil.js" type="text/javascript"></script>
+<link rel="stylesheet" th:href="@{/css/profil.css}" href="/css/profil.css" />
 </body>
 </html>
