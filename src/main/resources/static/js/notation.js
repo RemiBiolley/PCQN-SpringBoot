@@ -5,8 +5,6 @@ function applyNote(){
         var gameId = $("input[name='gameId']").val();
         if(value && gameId){
             if(user!=""){
-                alert(value);
-                alert(gameId);
                 $.ajax({
                     type: "POST",
                     url: "/note",

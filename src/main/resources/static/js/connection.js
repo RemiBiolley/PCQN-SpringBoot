@@ -24,7 +24,7 @@ function submitSub() {
                         $('#userNameFailed').html("Nom d'utilisateur déjà utilisé ou trop long");
                     }
                     else if(result==="done"){
-                        alert("hahah");
+                        alert("Inscription réussie")
                         window.location.href="/profil";
                     }
                 }

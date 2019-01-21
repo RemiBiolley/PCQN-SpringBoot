@@ -106,10 +106,7 @@ public class GameController {
             }
 
             else {
-                System.out.println(note);
-                System.out.println(gameId);
                 User user = (User) request.getSession().getAttribute("user");
-                System.out.println(noteRepository.findNoteByUserAndGame(user.getId(), gameId));
                 Game game = gameRepository.findGameById(gameId);
 
                 if (noteRepository.findNoteByUserAndGame(user.getId(), gameId) == null) {
@@ -124,7 +121,6 @@ public class GameController {
                 } else {
                     Integer noteId = noteRepository.findIdNoteByUserAndGame(user.getId(), gameId);
                     Note changedNote = noteRepository.findNoteById(noteId);
-                    System.out.println("final :" + note);
                     changedNote.setNote(note);
                     noteRepository.save(changedNote);
                 }

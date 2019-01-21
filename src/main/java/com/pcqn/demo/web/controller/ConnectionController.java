@@ -116,7 +116,6 @@ public class ConnectionController {
                     UserInfo userInfo = new UserInfo(n);
                     userInfoRepository.save(userInfo);
                     result ="done";
-                    System.out.println(result);
                 }
                 else{
                     result="userName";

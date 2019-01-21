@@ -2,7 +2,6 @@ function changeAvatar(){
     jQuery(document).ready(function(){
         var avatar = $("input[id='changeAvatar']").val();
         if(avatar){
-            alert(avatar);
             $.ajax({
                 type: "POST",
                 url: "/changeAvatar",

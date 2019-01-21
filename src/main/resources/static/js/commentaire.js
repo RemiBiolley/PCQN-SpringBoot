@@ -5,7 +5,6 @@ function addComment(){
         var gameId = $("input[type='hidden']").val();
         if(commentContent){
             if(user!=""){
-                alert(commentContent);
                 $.ajax({
                     type: "POST",
                     url: "/comment",
@@ -39,7 +38,6 @@ $("input[name='addResponse']").on("click", function(){
     var responseContent = $(this).siblings('input').eq(0).val();
     var gameId = $("input[type='hidden']").val();
     if(responseContent){
-        alert(responseContent);
         $.ajax({
             type: "POST",
             url: "/response",
@@ -85,7 +83,6 @@ $(function () {
 
 $("input[name='eraseComment']").on("click", function(){
     var commentId = $(this).parent().siblings($("input[name='commentId']")).eq(0).val();
-    alert(commentId);
     if(commentId){
         $.ajax({
             type: "POST",

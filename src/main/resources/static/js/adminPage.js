@@ -32,9 +32,7 @@ $("input[name='buttonMomentGame']").on("click", function(){
 });
 
 $("input[name='promoteUser']").on("click", function(){
-    alert($(this).val());
     var promotedUserName = $(this).parent().siblings(".userName").eq(0).text();
-    alert(promotedUserName)
     if(promotedUserName){
         $.ajax({
             type: "POST",
@@ -54,7 +52,6 @@ $("input[name='promoteUser']").on("click", function(){
 
 $("input[name='retrogradeUser']").on("click", function(){
     var retrogradedUserName = $(this).parent().siblings(".userName").eq(0).text();
-    alert(retrogradedUserName)
     if(retrogradedUserName){
         $.ajax({
             type: "POST",
@@ -74,7 +71,6 @@ $("input[name='retrogradeUser']").on("click", function(){
 
 $("input[name='removeUser']").on("click", function(){
     var removedUserName = $(this).parent().siblings(".userName").eq(0).text();
-    alert(removedUserName);
     if(removedUserName){
         var conf = confirm("Voulez-vous vraiment supprimer cet utilisateur ? (" + removedUserName + ")");
         if(conf){
